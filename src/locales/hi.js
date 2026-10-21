@@ -1,0 +1,233 @@
+/**
+ * Hindi Localization Dictionary (Default)
+ * Authentic terminology suitable for Rajasthan Gram Panchayats.
+ */
+
+export default {
+  // App Identity
+  appName: 'सरपंच सेतु',
+  appSubtitle: 'ग्राम पंचायत नागरिक सेवा एवं संवाद सेतु',
+  governmentDisclaimerBadge: 'स्वतंत्र नागरिक संवाद मंच • गैर-सरकारी',
+
+  // Navigation
+  nav: {
+    home: 'मुखपृष्ठ',
+    profile: 'प्रत्याशी परिचय',
+    works: 'विकास कार्य',
+    vision: 'दृष्टिकोण व प्राथमिकताएं',
+    services: 'नागरिक सेवाएं',
+    complaints: 'समस्या निवारण',
+    schemes: 'सरकारी योजनाएं',
+    announcements: 'सूचनाएं',
+    helplines: 'हेल्पलाइन',
+    adminLogin: 'प्रशासन लॉगिन'
+  },
+
+  // Common UI & Actions
+  actions: {
+    switchLang: 'English',
+    lodgeComplaint: 'समस्या दर्ज करें',
+    trackComplaint: 'स्थिति जांचें',
+    viewAllWorks: 'सभी कार्य देखें',
+    viewAnnouncements: 'सभी सूचनाएं',
+    contactSarpanch: 'सीधा संपर्क करें',
+    whatsappMessage: 'व्हाट्सएप संदेश भेजें',
+    callNow: 'कॉल करें',
+    submit: 'जमा करें',
+    submitting: 'दर्ज हो रहा है...',
+    reset: 'रीसेट करें',
+    close: 'बंद करें',
+    copy: 'कॉपी करें',
+    copied: 'कॉपी हो गया!',
+    backToHome: 'मुखपृष्ठ पर लौटें',
+    readMore: 'अधिक पढ़ें',
+    showLess: 'कम दिखाएं',
+    verifiedSource: 'सत्यापित अभिलेख देखें',
+    filterAll: 'सभी',
+    searchPlaceholder: 'खोजें...'
+  },
+
+  // Hero Section
+  hero: {
+    verifiedBadge: 'सत्यापित जनसेवक',
+    connectPrompt: 'ग्राम पंचायत के विकास और जनसुनवाई हेतु सदैव तत्पर',
+    quickHelpTitle: 'नागरिक त्वरित सहायता',
+    urgentEmergency: 'आपातकालीन नंबर'
+  },
+
+  // Candidate Profile
+  profile: {
+    title: 'प्रत्याशी जीवन परिचय एवं अनुभव',
+    subtitle: 'ईमानदार, पारदर्शी एवं जन-सरोकारों से जुड़ा नेतृत्व',
+    biography: 'जीवन परिचय',
+    education: 'शैक्षणिक योग्यता',
+    experience: 'सामाजिक व प्रशासनिक अनुभव',
+    socialWork: 'सामाजिक सरोकार एवं सेवा कार्य',
+    verifiedAchievements: 'सत्यापित उपलब्धियां',
+    visionQuote: 'जनहित ही सर्वोपरि'
+  },
+
+  // Development Works
+  works: {
+    title: 'ग्राम पंचायत विकास कार्य विवरण',
+    subtitle: 'किए गए, जारी और प्रस्तावित कार्यों का पारदर्शी ब्योरा',
+    tabs: {
+      all: 'सभी कार्य',
+      completed: 'पूर्ण कार्य (सत्यापित)',
+      ongoing: 'प्रगति पर (चालू कार्य)',
+      proposed: 'प्रस्तावित कार्ययोजना'
+    },
+    statusLabel: 'स्थिति',
+    locationLabel: 'स्थान',
+    periodLabel: 'समयावधि',
+    sourceLabel: 'सत्यापन स्रोत',
+    priorityLabel: 'प्राथमिकता',
+    proposedNotice: 'सूचना: प्रस्तावित कार्य जनहित प्राथमिकताओं पर आधारित संकल्प हैं, इन्हें पूर्ण कार्य न समझें।'
+  },
+
+  // Vision & Mission
+  vision: {
+    title: 'संकल्प एवं विकास प्राथमिकताएं',
+    subtitle: 'ग्राम पंचायत को आत्मनिर्भर और विकसित बनाने का विजन',
+    visionHeading: 'हमारा विजन (दीर्घकालिक लक्ष्य)',
+    missionHeading: 'हमारा मिशन (कार्ययोजना)',
+    prioritiesHeading: 'प्रमुख 6 विकास स्तंभ'
+  },
+
+  // Citizen Services Panel
+  services: {
+    title: 'नागरिक सेवा केंद्र',
+    subtitle: 'एक क्लिक पर पंचायत सेवाएं, शिकायत निवारण व जनसूचनाएं',
+    lodgeCardTitle: 'समस्या / शिकायत दर्ज करें',
+    lodgeCardDesc: 'पेयजल, सड़क, नाली, बिजली या अन्य ग्रामीण समस्या दर्ज कराएं। 72 घंटे में संज्ञान।',
+    trackCardTitle: 'शिकायत की स्थिति जांचें',
+    trackCardDesc: 'अपने ट्रैकिंग नंबर और मोबाइल के अंतिम 4 अंकों से समाधान की प्रगति देखें।',
+    schemesCardTitle: 'प्रमुख सरकारी योजनाएं',
+    schemesCardDesc: 'पात्रता नियम, आवश्यक दस्तावेज सूची एवं आधिकारिक आवेदन लिंक।',
+    announcementsCardTitle: 'ग्राम सभा व सार्वजनिक सूचनाएं',
+    announcementsCardDesc: 'टीकाकरण शिविर, ग्राम सभा बैठकें, सरकारी आदेश व महत्वपूर्ण तिथियां।'
+  },
+
+  // Complaint System
+  complaint: {
+    modalTitle: 'नागरिक समस्या / शिकायत पंजीकरण',
+    modalSubtitle: 'कृपया अपनी समस्या का सही विवरण दें ताकि त्वरित समाधान किया जा सके।',
+    trackModalTitle: 'शिकायत स्थिति खोजें',
+    trackModalSubtitle: 'अपनी शिकायत का ट्रैकिंग क्रमांक और मोबाइल नंबर दर्ज करें।',
+    fields: {
+      name: 'आपका नाम (नागरिक नाम)',
+      namePlaceholder: 'उदा. मोहन लाल कुमावत',
+      mobile: 'मोबाइल नंबर (संपर्क एवं स्टेटस हेतु)',
+      mobilePlaceholder: '10 अंकों का मोबाइल नंबर',
+      category: 'समस्या का प्रकार / श्रेणी चुनें',
+      categoryPlaceholder: '-- श्रेणी का चयन करें --',
+      ward: 'वार्ड संख्या / ढाणी / मोहल्ला',
+      wardPlaceholder: 'उदा. वार्ड 3, ढाणी बागावाली',
+      description: 'समस्या का स्पष्ट एवं विस्तृत विवरण',
+      descriptionPlaceholder: 'समस्या कब से है और किस स्थान पर है, विस्तार से लिखें...',
+      photo: 'समस्या का फोटो (वैकल्पिक, अधिकतम 5MB)',
+      consent: 'मैं प्रमाणित करता/करती हूं कि दी गई जानकारी सत्य है। मैं इस समस्या के समाधान हेतु ग्राम पंचायत प्रतिनिधियों द्वारा संपर्क किए जाने पर सहमत हूं।'
+    },
+    categories: {
+      water: 'पेयजल समस्या (पाइपलाइन, नल, फ्लोराइड, मोटर)',
+      road: 'सड़क एवं मार्ग (ग्रेवल, सीसी रोड, कीचड़)',
+      light: 'स्ट्रीट लाइट एवं प्रकाश (खंभा, बल्ब, अंधेरा)',
+      cleanliness: 'सफाई एवं कचरा प्रबंधन (कचरा ढेर, बदबू)',
+      drainage: 'नाली एवं जलभराव (अवरुद्ध नाली, गंदा पानी)',
+      infrastructure: 'सार्वजनिक भवन / विद्यालय / श्मशान घाट',
+      scheme_guidance: 'सरकारी योजना मार्गदर्शन व सहायता',
+      other: 'अन्य स्थानीय सार्वजनिक समस्या'
+    },
+    privacyNotice: 'सुरक्षा सूचना: हम आधार संख्या, बैंक खाता या कोई गोपनीय जानकारी नहीं मांगते हैं। आपका फोन नंबर केवल स्थिति सत्यापन हेतु प्रयुक्त होता है।',
+    successTitle: 'शिकायत सफलतापूर्वक दर्ज हो गई है!',
+    successMessage: 'आपकी समस्या को प्राथमिकता के साथ पंजीकृत कर लिया गया है। कृपया अपना ट्रैकिंग कोड सुरक्षित रखें:',
+    trackingIdLabel: 'यूनिक ट्रैकिंग क्रमांक (Tracking ID)',
+    copyBtn: 'ट्रैकिंग कोड कॉपी करें',
+    viewStatusBtn: 'अभी स्थिति देखें',
+    statuses: {
+      submitted: 'दर्ज (प्राप्त हुई)',
+      under_review: 'समीक्षाधीन (जांच जारी)',
+      in_progress: 'प्रगति पर (कार्य चालू)',
+      resolved: 'निस्तारित (समाधान पूर्ण)',
+      closed: 'बंद'
+    },
+    statusTimelines: {
+      submittedDesc: 'नागरिक द्वारा पोर्टल पर समस्या दर्ज की गई।',
+      underReviewDesc: 'पंचायत प्रतिनिधि द्वारा समस्या का भौतिक सत्यापन किया जा रहा है।',
+      inProgressDesc: 'संबंधित तकनीकी दल अथवा विभाग को समाधान हेतु निर्देशित किया गया।',
+      resolvedDesc: 'समस्या का समाधान पूर्ण कर लिया गया है।',
+      closedDesc: 'शिकायत निवारण प्रक्रिया पूर्ण।'
+    },
+    tracking: {
+      inputCode: 'ट्रैकिंग कोड दर्ज करें (उदा. SETU-RJ-XXXXXX)',
+      inputMobileLast4: 'दर्ज मोबाइल नंबर के अंतिम 4 अंक',
+      searchBtn: 'स्थिति जांचें',
+      searching: 'खोज रहे हैं...',
+      notFoundTitle: 'शिकायत नहीं मिली',
+      notFoundMsg: 'कृपया ट्रैकिंग कोड और मोबाइल नंबर के अंतिम 4 अंक दोबारा जांचें।',
+      timelineTitle: 'निवारण प्रगति विवरण',
+      submittedOn: 'पंजीकरण दिनांक',
+      currentStatus: 'वर्तमान स्थिति',
+      category: 'श्रेणी',
+      villageLocality: 'स्थान',
+      publicNote: 'पंचायत प्रतिनिधि की आधिकारिक टिप्पणी'
+    },
+    errors: {
+      nameRequired: 'कृपया अपना नाम दर्ज करें।',
+      mobileInvalid: 'कृपया मान्य 10 अंकों का भारतीय मोबाइल नंबर दर्ज करें।',
+      categoryRequired: 'कृपया समस्या की श्रेणी चुनें।',
+      wardRequired: 'कृपया वार्ड संख्या अथवा मोहल्ला लिखें।',
+      descTooShort: 'कृपया समस्या का विवरण कम से कम 15 अक्षरों में लिखें।',
+      consentRequired: 'आगे बढ़ने के लिए सहमति देना अनिवार्य है।',
+      trackingCodeRequired: 'कृपया ट्रैकिंग कोड दर्ज करें।',
+      last4Required: 'कृपया मोबाइल के अंतिम 4 अंक दर्ज करें।',
+      fileTooBig: 'फोटो का आकार 5MB से कम होना चाहिए।',
+      fileInvalidType: 'केवल JPG, PNG या WebP फोटो ही अपलोड किए जा सकते हैं।'
+    }
+  },
+
+  // Government Schemes
+  schemes: {
+    title: 'प्रमुख जनकल्याणकारी सरकारी योजनाएं',
+    subtitle: 'राजस्थान एवं भारत सरकार की सत्यापित योजनाएं एवं आवश्यक दस्तावेज',
+    filterAll: 'सभी योजनाएं',
+    filterHousing: 'आवास एवं निर्माण',
+    filterWater: 'पेयजल व स्वच्छता',
+    filterFarmer: 'किसान एवं पशुपालक',
+    filterHealth: 'स्वास्थ्य व सामाजिक सुरक्षा',
+    documentsNeeded: 'आवश्यक दस्तावेज चेकलिस्ट',
+    eligibility: 'पात्रता मापदंड',
+    applicationProcess: 'आवेदन प्रक्रिया',
+    officialPortal: 'आधिकारिक सरकारी पोर्टल',
+    lastVerified: 'अंतिम सत्यापन',
+    officialDisclaimer: 'सावधानी: इस पोर्टल पर दी गई जानकारी केवल नागरिक सुविधा हेतु है। अंतिम पात्रता एवं वित्तीय स्वीकृति संबंधित सरकारी विभाग द्वारा नियमों के अनुसार ही मान्य होगी।'
+  },
+
+  // Staff / Admin Modal
+  admin: {
+    title: 'सरपंच / ग्राम पंचायत अधिकृत पोर्टल',
+    pinLabel: 'अधिकृत सुरक्षा पिन दर्ज करें',
+    pinPlaceholder: 'सुरक्षा पिन दर्ज करें',
+    loginBtn: 'प्रवेश करें',
+    logoutBtn: 'लॉगआउट',
+    accessGranted: 'अधिकृत पहुंच प्राप्त हुई',
+    invalidPin: 'गलत सुरक्षा पिन! कृपया सही पिन दर्ज करें।',
+    complaintListTitle: 'प्राप्त जनसमस्याएं एवं स्थिति प्रबंधन',
+    updateStatusLabel: 'नई स्थिति चुनें',
+    adminNotesLabel: 'सार्वजनिक समाधान टिप्पणी (नागरिक को दिखेगी)',
+    adminNotesPlaceholder: 'उदा. जलदाय विभाग के लाइनमैन को पाइप मरम्मत हेतु भेज दिया गया है...',
+    saveStatusBtn: 'स्थिति अद्यतन करें',
+    statusUpdatedSuccess: 'शिकायत की स्थिति सफलतापूर्वक अपडेट हो गई!'
+  },
+
+  // Footer & Disclaimers
+  footer: {
+    aboutTitle: 'सरपंच सेतु के बारे में',
+    officeTitle: 'कार्यालय व संपर्क पता',
+    quickLinksTitle: 'त्वरित लिंक',
+    emergencyTitle: 'आपातकालीन सहायता नंबर',
+    copyright: 'सर्वाधिकार सुरक्षित',
+    privacyNotice: 'नागरिक गोपनीयता नीति: हम नागरिक डेटा का सम्मान करते हैं। फोन नंबर का उपयोग केवल शिकायत सत्यापन एवं आवश्यक सूचनाओं हेतु किया जाता है। किसी तीसरे पक्ष को डेटा विक्रय या साझा नहीं किया जाता।',
+    fullDisclaimer: 'अस्वीकरण (Disclaimer): यह वेब एप्लिकेशन ग्राम पंचायत स्तर पर पारदर्शिता और नागरिक संपर्क बढ़ाने का एक स्वतंत्र प्रयास है। यह भारत सरकार अथवा राजस्थान सरकार का कोई आधिकारिक पोर्टल नहीं है। न ही यह किसी सरकारी निर्णय या योजना स्वीकृति की कानूनी गारंटी प्रदान करता है।'
+  }
+};

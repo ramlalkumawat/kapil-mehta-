@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="36" fill="#1b4332"/>
+  <circle cx="96" cy="96" r="68" fill="#2d6a4f" opacity="0.3"/>
+  <!-- Panchayat Emblem / House & Tree motif -->
+  <path d="M48 94 L96 52 L144 94 V148 H48 Z" fill="#ffffff"/>
+  <rect x="80" y="108" width="32" height="40" rx="4" fill="#1b4332"/>
+  <circle cx="96" cy="80" r="12" fill="#d97706"/>
+  <!-- Sun Rays / Lotus petal motif -->
+  <path d="M96 32 V44" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+  <path d="M50 48 L60 58" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+  <path d="M142 48 L132 58" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "name": "sarpanch-setu",
+  "version": "1.0.0",
+  "description": "Lightweight, bilingual Sarpanch candidate and Gram Panchayat citizen services web application / PWA",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "switch-candidate": "node scripts/switch-candidate.js",
+    "validate": "node scripts/validate-candidates.js",
+    "test": "node scripts/run-tests.js"
+  },
+  "keywords": [
+    "sarpanch",
+    "gram-panchayat",
+    "rajasthan",
+    "citizen-services",
+    "pwa",
+    "bilingual",
+    "lightweight"
+  ],
+  "author": "Sarpanch Setu Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
