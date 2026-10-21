@@ -7,6 +7,12 @@
 import { onLanguageChange, getLocalized } from './locales/i18n.js';
 import activeCandidate from '../config/active-candidate.js';
 
+// Import Stylesheets for Vite Bundling & HMR
+import './styles/variables.css';
+import './styles/base.css';
+import './styles/components.css';
+import './styles/animations.css';
+
 // Import Components
 import { renderHeader, initHeaderEvents } from './components/Header.js';
 import { renderBottomNav, initBottomNavEvents } from './components/BottomNav.js';
@@ -89,11 +95,17 @@ function renderApp() {
 }
 
 // Initial mount
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
   renderApp();
 
   // Re-render automatically on language switch
   onLanguageChange(() => {
     renderApp();
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
