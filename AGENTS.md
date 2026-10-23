@@ -27,6 +27,6 @@ This file establishes strict operational guidelines for all AI agents working on
    - Centralize all strings in `locales/hi.js` and `locales/en.js`. Avoid hardcoded UI strings.
 7. **Verify Before Declaring Success**:
    - Never claim a feature works without checking tests, linting, or running the code.
-   - If third-party credentials (like live Supabase) are unconfigured, clearly report it as pending credentials and provide working offline/demo fallbacks without breaking the UI.
+   - If third-party backend credentials are unconfigured, clearly report it as pending credentials and provide working offline/demo fallbacks without breaking the UI.
 8. **Keep Documentation Synchronized**:
    - Update `TASKS.md`, `PROJECT_CONTEXT.md`, and `CHANGELOG.md` upon completing any significant feature.

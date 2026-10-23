@@ -34,10 +34,9 @@ The application is structured around a single master codebase customized entirel
   - Campaign task assignment and follow-up.
   - Candidate photograph upload and management.
   - Strictly query-driven metrics calculation (Zero fake numbers / fabricated totals).
-- **Backend & Database**:
-  - `supabase/migrations/001_sarpanch_setu_schema.sql`: Complaints schema with RLS and RPC functions.
-  - `supabase/migrations/002_campaign_management_schema.sql`: Campaign management schema (GPs, booths, volunteers, voters, field visits, tasks) with strict candidate isolation RLS policies.
-  - Local simulated storage engine fallback for offline and local evaluation without live credentials.
+- **Backend & Storage**:
+  - Live Google Cloud Run complaint submission microservice (`https://submit-complaint-giiw7bvowq-el.a.run.app`) for real-time Firestore storage.
+  - Client-side secure storage engine for offline PWA operation, local privacy verification, and campaign management.
 
 ## 5. Automated Verification Results
 - **Candidate Validation**: `npm run validate` passed with zero errors across all candidate files.
@@ -48,8 +47,6 @@ The application is structured around a single master codebase customized entirel
 - `VITE_CANDIDATE_ID`: Target candidate configuration ID (e.g. `candidate-kapil-mehta`).
 - `VITE_COMPLAINT_API_URL`: Live Google Cloud Run complaint submission microservice URL (`https://submit-complaint-giiw7bvowq-el.a.run.app`).
 - `VITE_GCP_COMPLAINT_URL`: Compatible alias for Cloud Run complaint submission microservice.
-- `VITE_SUPABASE_URL`: Supabase project URL (optional/alternative backend).
-- `VITE_SUPABASE_ANON_KEY`: Supabase anon public key.
 - `VITE_ADMIN_ACCESS_PIN`: Staff portal security PIN (default: `sarpanch789`).
 
 

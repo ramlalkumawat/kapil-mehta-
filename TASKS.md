@@ -47,12 +47,14 @@
   - Updated complaint form with specified labels, required fields, 7 standard categories, loading indicator, and double-submission protection.
   - Implemented confirmation section with server-generated tracking code, status badge ("दर्ज की गई"), copy tracking code button, and "Submit Another Complaint" action.
   - Expanded automated test suite with Suite 9 (**56/56 Passed, 100%**) and verified production build (`npm run build`).
+- [x] Phase 15: Clean Decoupling of Supabase:
+  - Removed `@supabase/supabase-js` package dependency, reducing bundle footprint.
+  - Removed `src/services/supabase.js` and `supabase/` migrations.
+  - Cleaned up environment variables and service worker references.
 
 ## Pending / Next Recommended Tasks
-- [ ] Connect live Supabase instance by supplying `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in `.env` and running `001_sarpanch_setu_schema.sql` (if Supabase database is also desired alongside Cloud Run).
 - [ ] Replace candidate SVG avatar placeholder with real high-resolution photographs when candidate assets are supplied.
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.
 
 ## Known Limitations / Disclosures
 - Browser automation in the local subagent environment encountered sandbox network restrictions regarding driver download; full verification was executed and confirmed via the automated Node.js test suite (`npm test`), configuration validator (`npm run validate`), and Vite build pipeline (`npm run build`).
-- Live Supabase operations run in local simulated mode until real project credentials are added to `.env`.

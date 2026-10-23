@@ -2,7 +2,7 @@
 ### Lightweight Bilingual Candidate & Gram Panchayat Citizen Services Web Application / PWA
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Tests](https://img.shields.io/badge/tests-29%2F29%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-56%2F56%20passed-brightgreen.svg)]()
 [![Region](https://img.shields.io/badge/region-Rajasthan%20(India)-darkgreen.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
@@ -71,15 +71,16 @@ sarpanch/
 │   ├── main.js                   # Application bootstrap and router
 │   ├── styles/                   # Design system (variables, base, components, animations)
 │   ├── locales/                  # Bilingual translation dictionaries (hi, en, i18n controller)
-│   ├── services/                 # Supabase client, complaint service, scheme service
+├── src/
+│   ├── main.js                   # Application bootstrap and router
+│   ├── styles/                   # Design system (variables, base, components, animations)
+│   ├── locales/                  # Bilingual translation dictionaries (hi, en, i18n controller)
+│   ├── services/                 # Cloud Run API client, complaint service, campaign service
 │   └── components/               # Header, BottomNav, Hero, Profile, Works, Services, etc.
 ├── scripts/
 │   ├── validate-candidates.js    # CLI validator for all candidate configuration files
 │   ├── switch-candidate.js       # CLI tool to switch active candidate in .env
 │   └── run-tests.js              # Comprehensive automated test suite
-├── supabase/
-│   └── migrations/
-│       └── 001_sarpanch_setu_schema.sql # PostgreSQL schema, RLS policies, RPC functions
 ├── public/                       # PWA icons, manifest, service worker, offline fallback
 ├── index.html                    # Single page HTML shell
 └── package.json                  # NPM dependencies & scripts
@@ -109,12 +110,10 @@ cp .env.example .env
 Configure your `.env` variables:
 ```ini
 # Active candidate configuration file identifier (in config/candidates/<id>.js)
-VITE_CANDIDATE_ID=candidate-001
+VITE_CANDIDATE_ID=candidate-kapil-mehta
 
-# Supabase Backend (Optional for local testing / demo mode)
-# If left blank, the app runs in safe local simulated storage mode
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
+# Backend Microservice for Citizen Complaints (Google Cloud Run)
+VITE_COMPLAINT_API_URL=https://submit-complaint-giiw7bvowq-el.a.run.app
 
 # Demonstration Staff Portal Access PIN
 VITE_ADMIN_ACCESS_PIN=sarpanch789
@@ -182,13 +181,9 @@ npm run preview
 
 ---
 
-## 🗄️ Database Setup (Supabase / PostgreSQL)
+## ☁️ Backend Architecture (Google Cloud Run)
 
-1. Create a new project on [Supabase](https://supabase.com).
-2. Open the **SQL Editor** in your Supabase dashboard.
-3. Paste and run the entire contents of `supabase/migrations/001_sarpanch_setu_schema.sql`.
-4. Copy your project URL and `anon` public key to `.env`.
-5. The application will automatically connect to live PostgreSQL tables with strict Row Level Security (RLS) policies and security-definer RPC functions enabled.
+All citizen grievance submissions are processed securely through a dedicated Google Cloud Run microservice endpoint (`https://submit-complaint-giiw7bvowq-el.a.run.app`), with candidate data isolation, anti-spam validation, and auto-generated tracking codes. Campaign management utilizes client-side isolated storage.
 
 ---
 
@@ -197,7 +192,7 @@ npm run preview
 Because Sarpanch Setu compiles to static HTML, CSS, and vanilla ES modules:
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
-- **Environment Variables**: Set `VITE_CANDIDATE_ID`, `VITE_SUPABASE_URL`, and `VITE_SUPABASE_ANON_KEY` in your hosting dashboard.
+- **Environment Variables**: Set `VITE_CANDIDATE_ID` and `VITE_COMPLAINT_API_URL` in your hosting dashboard.
 
 ---
 

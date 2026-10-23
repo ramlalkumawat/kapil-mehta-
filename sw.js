@@ -55,7 +55,7 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
-  // If requesting external APIs or Supabase, do NOT cache sensitive responses
+  // If requesting external APIs (e.g. Cloud Run), do NOT cache sensitive responses
   if (url.origin !== self.location.origin) {
     return;
   }

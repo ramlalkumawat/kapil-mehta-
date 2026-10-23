@@ -2,11 +2,7 @@
  * Campaign Management Service — Sarpanch Setu (Candidate Edition)
  * Manages Gram Panchayats, Polling Booths, Volunteers, Voter Registry,
  * Field Surveys/Visits, and Campaign Tasks with strict candidate data isolation.
- *
- * Supports both live Supabase client (when configured) and local persistent storage.
  */
-
-import { supabase, isLiveBackendConfigured } from './supabase.js';
 import { getStaffComplaints } from './complaintService.js';
 
 const KEY_VOLUNTEERS = 'sarpanch_setu_volunteers';
@@ -106,24 +102,6 @@ export async function addBoothToPanchayat(candidateId, gpId, boothName) {
 export async function getVolunteers(candidateId, filterGp = '') {
   if (!candidateId) return [];
 
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      let query = supabase
-        .from('volunteers')
-        .select('*')
-        .eq('candidate_id', candidateId)
-        .order('created_at', { ascending: false });
-
-      if (filterGp) {
-        query = query.eq('gram_panchayat', filterGp);
-      }
-      const { data, error } = await query;
-      if (!error && data) return data;
-    } catch (err) {
-      console.warn('[CampaignService] Supabase volunteers fetch failed, using local store:', err);
-    }
-  }
-
   const all = readStore(KEY_VOLUNTEERS);
   return all
     .filter(v => v.candidate_id === candidateId)
@@ -155,15 +133,6 @@ export async function addVolunteer(candidateId, volunteerData) {
     created_at: new Date().toISOString()
   };
 
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { error } = await supabase.from('volunteers').insert(record);
-      if (!error) return { success: true, volunteer: record };
-    } catch (err) {
-      console.warn('[CampaignService] Live volunteer insert failed, saving to local store:', err);
-    }
-  }
-
   const all = readStore(KEY_VOLUNTEERS);
   all.unshift(record);
   writeStore(KEY_VOLUNTEERS, all);
@@ -171,16 +140,6 @@ export async function addVolunteer(candidateId, volunteerData) {
 }
 
 export async function deleteVolunteer(candidateId, volunteerId) {
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      await supabase
-        .from('volunteers')
-        .delete()
-        .eq('id', volunteerId)
-        .eq('candidate_id', candidateId);
-    } catch (err) {}
-  }
-
   const all = readStore(KEY_VOLUNTEERS);
   const updated = all.filter(v => !(v.id === volunteerId && v.candidate_id === candidateId));
   writeStore(KEY_VOLUNTEERS, updated);
@@ -195,30 +154,8 @@ export async function getVoters(candidateId, options = {}) {
   const { filterGp = '', search = '' } = options;
   if (!candidateId) return [];
 
-  let voters = [];
-
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      let query = supabase
-        .from('voters')
-        .select('*')
-        .eq('candidate_id', candidateId)
-        .order('created_at', { ascending: false });
-
-      if (filterGp) query = query.eq('gram_panchayat', filterGp);
-      if (search) query = query.ilike('full_name', `%${search}%`);
-
-      const { data, error } = await query;
-      if (!error && data) voters = data;
-    } catch (err) {
-      console.warn('[CampaignService] Supabase voters fetch failed, using local store:', err);
-    }
-  }
-
-  if (voters.length === 0) {
-    const all = readStore(KEY_VOTERS);
-    voters = all.filter(v => v.candidate_id === candidateId);
-  }
+  const all = readStore(KEY_VOTERS);
+  let voters = all.filter(v => v.candidate_id === candidateId);
 
   if (filterGp) {
     voters = voters.filter(v => v.gram_panchayat === filterGp);
@@ -261,13 +198,6 @@ export async function addVoter(candidateId, voterData) {
     created_at: new Date().toISOString()
   };
 
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { error } = await supabase.from('voters').insert(record);
-      if (!error) return { success: true, voter: record };
-    } catch (err) {}
-  }
-
   const all = readStore(KEY_VOTERS);
   all.unshift(record);
   writeStore(KEY_VOTERS, all);
@@ -275,16 +205,6 @@ export async function addVoter(candidateId, voterData) {
 }
 
 export async function deleteVoter(candidateId, voterId) {
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      await supabase
-        .from('voters')
-        .delete()
-        .eq('id', voterId)
-        .eq('candidate_id', candidateId);
-    } catch (err) {}
-  }
-
   const all = readStore(KEY_VOTERS);
   const updated = all.filter(v => !(v.id === voterId && v.candidate_id === candidateId));
   writeStore(KEY_VOTERS, updated);
@@ -402,20 +322,6 @@ export async function exportVotersCsv(candidateId, filterGp = '') {
 export async function getFieldVisits(candidateId, filterGp = '') {
   if (!candidateId) return [];
 
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      let query = supabase
-        .from('field_visits')
-        .select('*')
-        .eq('candidate_id', candidateId)
-        .order('visit_date', { ascending: false });
-
-      if (filterGp) query = query.eq('gram_panchayat', filterGp);
-      const { data, error } = await query;
-      if (!error && data) return data;
-    } catch (err) {}
-  }
-
   const all = readStore(KEY_VISITS);
   return all
     .filter(v => v.candidate_id === candidateId)
@@ -442,13 +348,6 @@ export async function addFieldVisit(candidateId, visitData) {
     created_at: new Date().toISOString()
   };
 
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { error } = await supabase.from('field_visits').insert(record);
-      if (!error) return { success: true, visit: record };
-    } catch (err) {}
-  }
-
   const all = readStore(KEY_VISITS);
   all.unshift(record);
   writeStore(KEY_VISITS, all);
@@ -461,20 +360,6 @@ export async function addFieldVisit(candidateId, visitData) {
 
 export async function getCampaignTasks(candidateId, filterGp = '') {
   if (!candidateId) return [];
-
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      let query = supabase
-        .from('campaign_tasks')
-        .select('*')
-        .eq('candidate_id', candidateId)
-        .order('created_at', { ascending: false });
-
-      if (filterGp) query = query.eq('gram_panchayat', filterGp);
-      const { data, error } = await query;
-      if (!error && data) return data;
-    } catch (err) {}
-  }
 
   const all = readStore(KEY_TASKS);
   return all
@@ -499,13 +384,6 @@ export async function addCampaignTask(candidateId, taskData) {
     status: 'pending', // pending, in_progress, completed
     created_at: new Date().toISOString()
   };
-
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { error } = await supabase.from('campaign_tasks').insert(record);
-      if (!error) return { success: true, task: record };
-    } catch (err) {}
-  }
 
   const all = readStore(KEY_TASKS);
   all.unshift(record);

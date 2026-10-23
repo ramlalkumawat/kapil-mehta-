@@ -1,9 +1,8 @@
 /**
  * Complaint Submission, Tracking & Management Service
- * Supports both live Supabase RPC and secure local simulated persistence.
+ * Directly integrated with Google Cloud Run microservice and secure local client persistence.
  */
 
-import { supabase, isLiveBackendConfigured } from './supabase.js';
 
 const LOCAL_STORAGE_KEY = 'sarpanch_setu_complaints';
 const LOCAL_UPDATES_KEY = 'sarpanch_setu_updates';
@@ -301,27 +300,7 @@ export async function trackComplaint(trackingCode, mobileLast4) {
     return { found: false, error: 'last4Required' };
   }
 
-  // If live Supabase backend is configured:
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { data: result, error } = await supabase.rpc('track_complaint', {
-        p_tracking_code: cleanCode,
-        p_mobile_last4: cleanLast4
-      });
-
-      if (!error && result && result.found) {
-        return {
-          found: true,
-          data: result,
-          isDemo: false
-        };
-      }
-    } catch (err) {
-      console.warn('[SarpanchSetu] Live tracking query error, falling back to local:', err.message);
-    }
-  }
-
-  // Local simulation fallback
+  // Client storage lookup & timeline retrieval
   const complaints = getLocalComplaints();
   const updates = getLocalUpdates();
 

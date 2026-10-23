@@ -12,6 +12,10 @@ All notable changes to this project are documented in this file.
   - Added robust frontend validations: empty checks, 10-digit Indian mobile validation (`/^[6-9]\d{9}$/`), double-submission prevention, and accessible loading state indicator ("शिकायत दर्ज की जा रही है...").
   - Implemented visually polished success confirmation section with server-generated tracking code, status badge ("दर्ज की गई"), copy tracking code button, and "Submit Another Complaint" action.
   - Added test suite Suite 9 with 9 automated tests passing (total: **56 / 56 tests passed**).
+- **Decoupled Supabase**:
+  - Removed `@supabase/supabase-js` runtime dependency, reducing bundle footprint.
+  - Removed `src/services/supabase.js` and `supabase/` database migrations directory.
+  - Cleaned up environment variables and service worker references.
 
 ## [1.1.0] - 2026-10-22
 ### Added
