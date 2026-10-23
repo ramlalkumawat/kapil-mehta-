@@ -31,6 +31,16 @@
 - [x] Phase 10: Candidate validator CLI (`scripts/validate-candidates.js`) and candidate switcher (`scripts/switch-candidate.js`).
 - [x] Phase 11: Automated test suite (`scripts/run-tests.js`) passing 29 out of 29 tests across schemas, i18n parity, validation, privacy shields, and tracking workflows.
 - [x] Phase 12: Production build verified with Vite (`npm run build`).
+- [x] Phase 13: Kapil Mehta Candidate Edition Personalization (District Council Ward 22, Jhalawar, Rajasthan):
+  - Configured active candidate `config/candidates/candidate-kapil-mehta.js` with verified personal details, education timeline (6 qualifications), political journey (ABVP & BJYM 2014-2025), and 7 Gram Panchayats (Akodiya, Sarkhandiya, Panwad, Bishan Khedi, Pakhrana, Layphal, Harigarh).
+  - Updated design tokens to dark maroon (`#800020`), subtle saffron (`#d97706`), and off-white background (`#faf8f5`).
+  - Added campaign management module (`src/services/campaignService.js`) supporting volunteer assignment, voter registry with CSV import/export, field surveys, task management, and strictly query-driven metrics.
+  - Implemented full Campaign Management Portal & Admin Dashboard (`src/components/AdminPanel.js`) with 8 interactive modules and GP location filters.
+  - Updated Grievance Modal (`src/components/ComplaintModal.js`) with dynamic Ward 22 Gram Panchayat selector.
+  - Updated Candidate Profile Section (`src/components/ProfileSection.js`) with verified personal details, card-based education timeline, and chronological political journey timeline.
+  - Added PostgreSQL migration `supabase/migrations/002_campaign_management_schema.sql` with multi-tenant RLS.
+  - Expanded automated test suite (`scripts/run-tests.js`) to 47 tests with 100% pass rate (**47/47 Passed**).
+  - Production build verified with Vite (`npm run build`).
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect live Supabase instance by supplying `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in `.env` and running `001_sarpanch_setu_schema.sql`.

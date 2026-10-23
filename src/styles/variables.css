@@ -4,28 +4,28 @@
  */
 
 :root {
-  /* Brand Primary: Forest Green */
-  --color-primary: #1b4332;
-  --color-primary-dark: #081c15;
-  --color-primary-light: #2d6a4f;
-  --color-primary-subtle: #e8f5e9;
+  /* Brand Primary: Dark Maroon / Deep Red (Rajasthan Election Dignity) */
+  --color-primary: #800020;
+  --color-primary-dark: #4c0519;
+  --color-primary-light: #9f1239;
+  --color-primary-subtle: #fdf2f4;
 
-  /* Accent: Warm Ochre Gold (Rajasthan Sandstone & Grain) */
+  /* Accent: Warm Saffron / Ochre Gold (Rajasthan Heritage) */
   --color-accent: #d97706;
   --color-accent-hover: #b45309;
   --color-accent-subtle: #fef3c7;
 
-  /* Neutrals: Soft Cream, Crisp White, Charcoal */
-  --color-bg: #f8f6f0;
+  /* Neutrals: Soft Off-White, Crisp White, Charcoal */
+  --color-bg: #faf8f5;
   --color-surface: #ffffff;
-  --color-surface-subtle: #f3efe6;
+  --color-surface-subtle: #f5efe6;
   --color-surface-elevated: #ffffff;
   
   --color-text-main: #1f2937;
   --color-text-muted: #4b5563;
   --color-text-light: #6b7280;
-  --color-border: #e2dacd;
-  --color-border-light: #eee7dc;
+  --color-border: #e6ded3;
+  --color-border-light: #efe9e0;
 
   /* Semantic Status Colors */
   --color-success: #15803d;

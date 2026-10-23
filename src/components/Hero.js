@@ -6,13 +6,14 @@
 
 import { t, getLocalized } from '../locales/i18n.js';
 import activeCandidate from '../../config/active-candidate.js';
+import { getCustomCandidatePhoto } from '../services/campaignService.js';
 
-// SVG Placeholder Avatar for rural representative
+// SVG Placeholder Avatar for rural candidate with dignified Rajasthan attire
 function getCandidateAvatarSvg() {
   return `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
-      <rect width="120" height="120" fill="#e8f5e9" />
-      <!-- Traditional Pagri / Turban styling silhouette for Rajasthan leadership -->
+      <rect width="120" height="120" fill="#fdf2f4" />
+      <!-- Traditional Pagri / Turban styling in warm saffron & maroon -->
       <path d="M30 42C30 28 42 18 60 18C78 18 90 28 90 42C90 46 88 50 84 53C80 50 72 48 60 48C48 48 40 50 36 53C32 50 30 46 30 42Z" fill="#d97706" />
       <path d="M35 34C42 26 52 22 60 22C68 22 78 26 85 34C81 37 72 38 60 38C48 38 39 37 35 34Z" fill="#b45309" />
       <!-- Face -->
@@ -20,11 +21,11 @@ function getCandidateAvatarSvg() {
       <!-- Eyes & Tilak -->
       <circle cx="52" cy="54" r="2.5" fill="#374151" />
       <circle cx="68" cy="54" r="2.5" fill="#374151" />
-      <path d="M59 44H61V52H59V44Z" fill="#dc2626" />
+      <path d="M59 44H61V52H59V44Z" fill="#800020" />
       <!-- Smile / Mustache -->
       <path d="M48 64C52 68 56 69 60 69C64 69 68 68 72 64C70 63 65 62 60 62C55 62 50 63 48 64Z" fill="#1f2937" />
-      <!-- Kurta / Dress -->
-      <path d="M22 110C22 92 36 82 60 82C84 82 98 92 98 110V120H22V110Z" fill="#1b4332" />
+      <!-- Kurta / Dress in dignified Maroon -->
+      <path d="M22 110C22 92 36 82 60 82C84 82 98 92 98 110V120H22V110Z" fill="#800020" />
       <path d="M52 82L60 96L68 82H52Z" fill="#ffffff" />
     </svg>
   `;
@@ -41,7 +42,8 @@ export function renderHero() {
   const tagline = getLocalized(activeCandidate.tagline);
   const phone = activeCandidate.contact?.phone || '+91-9876543210';
   const whatsappNum = activeCandidate.contact?.whatsapp || '919876543210';
-  const photo = activeCandidate.photo;
+  const customPhoto = getCustomCandidatePhoto(activeCandidate.id);
+  const photo = customPhoto || activeCandidate.photo;
 
   return `
     <section id="home" class="container" style="padding-top: var(--space-4);">
@@ -65,12 +67,14 @@ export function renderHero() {
                 ${t('hero.verifiedBadge')}
               </span>
               <span class="badge badge-primary">${designation}</span>
+              ${activeCandidate.wardNumber ? `<span class="badge badge-accent">वार्ड नं. ${activeCandidate.wardNumber}</span>` : ''}
             </div>
 
             <h1 class="hero-name">${name}</h1>
 
             <div class="hero-panchayat-meta">
-              <strong>${panchayat}</strong> • ${village ? `${village}, ` : ''}${tehsil ? `${tehsil}, ` : ''}${district} (${state})
+              <strong>${panchayat}</strong> • ${district} (${state})
+              ${village ? `<div style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 2px;">मूल निवास: ${village}, तहसील: ${tehsil}</div>` : ''}
             </div>
 
             <p class="hero-tagline">“${tagline}”</p>

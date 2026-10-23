@@ -1,7 +1,7 @@
 /**
  * Profile Section Component
- * Candidate biography, educational background, public experience,
- * verified social work, and community contributions.
+ * Candidate biography, verified personal details, educational qualifications timeline,
+ * political journey timeline, public experience, and community welfare.
  */
 
 import { t, getLocalized } from '../locales/i18n.js';
@@ -11,6 +11,9 @@ export function renderProfileSection() {
   const bio = getLocalized(activeCandidate.bio);
   const education = getLocalized(activeCandidate.education);
   const experience = getLocalized(activeCandidate.experience);
+  const personalDetails = activeCandidate.personalDetails;
+  const educationTimeline = activeCandidate.educationTimeline || [];
+  const politicalJourney = activeCandidate.politicalJourney || [];
   const socialWorkList = activeCandidate.socialWork || [];
   const achievements = activeCandidate.verifiedAchievements || [];
 
@@ -23,37 +26,181 @@ export function renderProfileSection() {
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-6);">
-        <!-- Biography & Qualifications Card -->
+        <!-- 1. Verified Personal Details Card -->
+        ${personalDetails ? `
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">
+              <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin: 0; display: flex; align-items: center; gap: var(--space-2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                ${t('profile.personalDetailsHeading')}
+              </h3>
+              <span class="badge badge-success">✓ ${t('hero.verifiedBadge')}</span>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: flex-start;">
+              ${(activeCandidate.photoNamaste || activeCandidate.photo) ? `
+                <div style="width: 140px; height: 180px; border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--color-border); flex-shrink: 0; box-shadow: var(--shadow-sm); background: var(--color-surface-subtle); margin: 0 auto;">
+                  <img src="${activeCandidate.photoNamaste || activeCandidate.photo}" alt="${getLocalized(personalDetails.fullName)}" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" />
+                </div>
+              ` : ''}
+
+              <div style="flex: 1; min-width: 260px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3);">
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.fullName')}</span>
+                  <strong class="detail-val">${getLocalized(personalDetails.fullName)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.dob')}</span>
+                  <strong class="detail-val">${personalDetails.dobLocalized ? getLocalized(personalDetails.dobLocalized) : personalDetails.dob}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.nativeVillage')}</span>
+                  <strong class="detail-val">${getLocalized(personalDetails.nativeVillage)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.postOffice')}</span>
+                  <strong class="detail-val">${getLocalized(personalDetails.postOffice)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.tehsil')}</span>
+                  <strong class="detail-val">${getLocalized(personalDetails.tehsil)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.district')}</span>
+                  <strong class="detail-val">${getLocalized(personalDetails.district)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.position')}</span>
+                  <strong class="detail-val" style="color: var(--color-primary);">${getLocalized(personalDetails.position)}</strong>
+                </div>
+
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.ward')}</span>
+                  <strong class="detail-val" style="color: var(--color-accent);">${getLocalized(personalDetails.ward)}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 2. Candidate Biography Card -->
         <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin-bottom: var(--space-3); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">
+          <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin-bottom: var(--space-3); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
             ${t('profile.biography')}
           </h3>
-          <p style="font-size: var(--font-size-base); color: var(--color-text-main); line-height: 1.7; margin-bottom: var(--space-5);">
+          <p style="font-size: var(--font-size-base); color: var(--color-text-main); line-height: 1.8; margin-bottom: var(--space-4);">
             ${bio}
           </p>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); background-color: var(--color-surface-subtle); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--color-border-light);">
-            <div>
-              <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">
-                ${t('profile.education')}
-              </span>
-              <p style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-primary-dark); margin-top: 2px;">
-                ${education || '—'}
-              </p>
-            </div>
+          ${!educationTimeline.length ? `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); background-color: var(--color-surface-subtle); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--color-border-light);">
+              <div>
+                <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">
+                  ${t('profile.education')}
+                </span>
+                <p style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-primary-dark); margin-top: 2px;">
+                  ${education || '—'}
+                </p>
+              </div>
 
-            <div>
-              <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">
-                ${t('profile.experience')}
-              </span>
-              <p style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-primary-dark); margin-top: 2px;">
-                ${experience || '—'}
-              </p>
+              <div>
+                <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">
+                  ${t('profile.experience')}
+                </span>
+                <p style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-primary-dark); margin-top: 2px;">
+                  ${experience || '—'}
+                </p>
+              </div>
             </div>
-          </div>
+          ` : ''}
         </div>
 
-        <!-- Social Work & Community Welfare -->
+        <!-- 3. Educational Qualifications Timeline (Card-based layout) -->
+        ${educationTimeline.length > 0 ? `
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">
+              <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin: 0; display: flex; align-items: center; gap: var(--space-2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                ${t('profile.educationTimelineHeading')}
+              </h3>
+              <span style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 500;">
+                क्रमशः शैक्षणिक पृष्ठभूमि
+              </span>
+            </div>
+
+            <div class="education-grid">
+              ${educationTimeline.map((item, idx) => `
+                <div class="edu-card">
+                  <div class="edu-badge">${item.step || idx + 1}</div>
+                  <div class="edu-info">
+                    <h4 class="edu-level">${getLocalized(item.level)}</h4>
+                    <p class="edu-inst">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      ${getLocalized(item.institution)}
+                    </p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 4. Political Journey Chronological Timeline -->
+        ${politicalJourney.length > 0 ? `
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">
+              <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin: 0; display: flex; align-items: center; gap: var(--space-2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                ${t('profile.politicalJourneyHeading')}
+              </h3>
+              <span class="badge badge-accent">2014 – 2025</span>
+            </div>
+
+            <div class="journey-timeline">
+              ${politicalJourney.map(item => `
+                <div class="journey-item">
+                  <div class="journey-year-col">
+                    <span class="journey-year">${item.year}</span>
+                    <span class="journey-line"></span>
+                  </div>
+                  <div class="journey-content-box">
+                    <p class="journey-role">${getLocalized(item.role)}</p>
+                    ${item.organization ? `
+                      <span class="journey-org">
+                        🏛️ ${item.organization}
+                      </span>
+                    ` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Social Work & Community Welfare (If present in candidate) -->
         ${socialWorkList.length > 0 ? `
           <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);">
             <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">
@@ -80,7 +227,7 @@ export function renderProfileSection() {
           </div>
         ` : ''}
 
-        <!-- Verified Achievements -->
+        <!-- Verified Achievements (If present in candidate) -->
         ${achievements.length > 0 ? `
           <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);">
             <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin-bottom: var(--space-4); border-bottom: 2px solid var(--color-primary-subtle); padding-bottom: var(--space-2);">

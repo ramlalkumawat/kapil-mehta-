@@ -64,7 +64,20 @@ export default {
     experience: 'Social & Administrative Experience',
     socialWork: 'Community Service & Welfare Initiatives',
     verifiedAchievements: 'Verified Milestones',
-    visionQuote: 'Public Service Before Self'
+    visionQuote: 'Public Service Before Self',
+    personalDetailsHeading: 'Personal Details (Verified)',
+    labels: {
+      fullName: 'Full Name',
+      dob: 'Date of Birth',
+      nativeVillage: 'Native Village',
+      postOffice: 'Post Office',
+      tehsil: 'Tehsil',
+      district: 'District',
+      position: 'Position / Office',
+      ward: 'Ward'
+    },
+    educationTimelineHeading: 'Educational Qualifications',
+    politicalJourneyHeading: 'Political & Leadership Journey (2014–2025)'
   },
 
   // Development Works
@@ -123,6 +136,8 @@ export default {
       categoryPlaceholder: '-- Select Issue Category --',
       ward: 'Ward Number / Hamlet / Locality',
       wardPlaceholder: 'e.g. Ward 3, Dhani Bagawali',
+      gramPanchayat: 'Gram Panchayat',
+      gramPanchayatPlaceholder: '-- Select Gram Panchayat --',
       description: 'Clear & Detailed Problem Description',
       descriptionPlaceholder: 'Describe the duration, exact spot, and nature of the issue...',
       photo: 'Problem Photograph (Optional, max 5MB)',
@@ -176,6 +191,7 @@ export default {
       nameRequired: 'Please enter your name.',
       mobileInvalid: 'Please enter a valid 10-digit Indian mobile number.',
       categoryRequired: 'Please select an issue category.',
+      gpRequired: 'Please select your Gram Panchayat.',
       wardRequired: 'Please mention your ward or locality.',
       descTooShort: 'Please describe the problem in at least 15 characters.',
       consentRequired: 'Consent declaration is required to proceed.',

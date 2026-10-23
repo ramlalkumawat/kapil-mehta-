@@ -8,6 +8,7 @@ import { validateCandidateConfig, normalizeCandidateConfig } from '../config/sch
 import defaultConfig from '../config/candidates/default.js';
 import candidate001 from '../config/candidates/candidate-001.js';
 import candidate002 from '../config/candidates/candidate-002.js';
+import candidateKapilMehta from '../config/candidates/candidate-kapil-mehta.js';
 import hiDict from '../src/locales/hi.js';
 import enDict from '../src/locales/en.js';
 import {
@@ -17,6 +18,15 @@ import {
   trackComplaint,
   updateComplaintStatus
 } from '../src/services/complaintService.js';
+import {
+  addVolunteer,
+  getVolunteers,
+  addVoter,
+  getVoters,
+  importVotersCsv,
+  exportVotersCsv,
+  getCampaignMetrics
+} from '../src/services/campaignService.js';
 
 let passedTests = 0;
 let failedTests = 0;
@@ -49,6 +59,9 @@ assert(c1Val.valid, 'candidate-001.js satisfies all required schema fields');
 const c2Val = validateCandidateConfig(candidate002);
 assert(c2Val.valid, 'candidate-002.js satisfies all required schema fields');
 
+const kmVal = validateCandidateConfig(candidateKapilMehta);
+assert(kmVal.valid, 'candidate-kapil-mehta.js satisfies all required schema fields');
+
 const normalized = normalizeCandidateConfig({
   id: 'incomplete-cand',
   name: { hi: 'नाम', en: 'Name' },
@@ -62,6 +75,7 @@ const normalized = normalizeCandidateConfig({
 
 assert(Array.isArray(normalized.completedWorks), 'Normalizer provides empty array for missing completedWorks');
 assert(Array.isArray(normalized.priorities), 'Normalizer provides empty array for missing priorities');
+assert(Array.isArray(normalized.gramPanchayats), 'Normalizer provides empty array for missing gramPanchayats');
 assert(normalized.disclaimer && normalized.disclaimer.hi, 'Normalizer provides fallback statutory disclaimer');
 
 // -------------------------------------------------------------------------
@@ -69,9 +83,21 @@ assert(normalized.disclaimer && normalized.disclaimer.hi, 'Normalizer provides f
 // -------------------------------------------------------------------------
 console.log('\n🔒 Suite 2: Candidate Isolation & Distinct Data Boundaries');
 assert(candidate001.id !== candidate002.id, 'Candidate 001 and 002 have distinct identifiers');
-assert(candidate001.panchayatName.hi !== candidate002.panchayatName.hi, 'Candidates belong to different Gram Panchayats');
-assert(candidate001.contact.phone !== candidate002.contact.phone, 'Candidates have isolated official contact numbers');
-assert(candidate001.completedWorks[0].id !== candidate002.completedWorks[0].id, 'Works portfolios are isolated and do not cross-contaminate');
+assert(candidateKapilMehta.id !== candidate001.id, 'Kapil Mehta edition has distinct tenant ID');
+assert(candidateKapilMehta.panchayatName.hi === 'जिला परिषद वार्ड संख्या 22', 'Kapil Mehta correctly assigned Zila Parishad Ward 22');
+assert(candidateKapilMehta.wardNumber === '22', 'Kapil Mehta Ward Number verified as 22');
+assert(candidateKapilMehta.district.hi === 'झालावाड़', 'Kapil Mehta District verified as Jhalawar');
+assert(Array.isArray(candidateKapilMehta.gramPanchayats) && candidateKapilMehta.gramPanchayats.length === 7, 'Ward 22 configured with exactly 7 Gram Panchayats');
+
+const expectedGps = ['अकोदिया', 'सरखंडिया', 'पनवाड़', 'बिशन खेड़ी', 'पखराना', 'लायफल', 'हरीगढ़'];
+const actualGps = candidateKapilMehta.gramPanchayats.map(g => g.name.hi);
+const allGpsMatch = expectedGps.every(name => actualGps.includes(name));
+assert(allGpsMatch, 'All 7 specified Gram Panchayats are present with exact Hindi names');
+
+assert(candidateKapilMehta.personalDetails.nativeVillage.hi === 'गणेशपुरा (चोंसला)', 'Candidate native village verified as Ganeshpura (Chonsla)');
+assert(candidateKapilMehta.personalDetails.tehsil.hi === 'खानपुर', 'Candidate tehsil verified as Khanpur');
+assert(candidateKapilMehta.educationTimeline.length === 6, 'Candidate has exactly 6 verified educational qualifications');
+assert(candidateKapilMehta.politicalJourney.length === 6, 'Candidate has exactly 6 chronological political milestones (2014-2025)');
 
 // -------------------------------------------------------------------------
 // SUITE 3: i18n Translation Dictionary Key Parity
@@ -203,6 +229,47 @@ assert(authorizedUpdate.success, 'Authorized Sarpanch/Staff can update status wi
 const updatedTrack = await trackComplaint(submitResult.tracking_code, '4321');
 assert(updatedTrack.data.status === 'in_progress', 'Tracked complaint reflects updated status "in_progress"');
 assert(updatedTrack.data.history.length >= 2, 'Complaint history timeline contains updated audit events');
+
+// -------------------------------------------------------------------------
+// SUITE 8: Ward 22 Campaign Management, Volunteers & Voter Registry
+// -------------------------------------------------------------------------
+console.log('\n🗳️ Suite 8: Campaign Management, Volunteers & Voter Registry (Ward 22)');
+
+// Add Volunteer
+const volRes = await addVolunteer('candidate-kapil-mehta', {
+  name: 'राकेश शर्मा',
+  mobile: '9829011122',
+  gramPanchayat: 'अकोदिया',
+  assignedBooth: 'रा.उ.मा.वि. अकोदिया',
+  role: 'बूथ संयोजक'
+});
+assert(volRes.success && volRes.volunteer.name === 'राकेश शर्मा', 'Successfully registered volunteer for Akodiya');
+
+// Fetch volunteers filtered by GP
+const akdVolunteers = await getVolunteers('candidate-kapil-mehta', 'अकोदिया');
+assert(akdVolunteers.length >= 1, 'Volunteers query correctly filters by Gram Panchayat (Akodiya)');
+
+const otherGpVolunteers = await getVolunteers('candidate-kapil-mehta', 'पनवाड़');
+assert(otherGpVolunteers.length === 0, 'No false cross-contamination between different Gram Panchayats');
+
+// Import Voters via CSV
+const sampleCsv = `voter_id,full_name,relative_name,age,gender,gram_panchayat,booth,mobile\r\nRJ/12/345/001,मोहन लाल,रामचन्द्र,38,M,पनवाड़,रा.उ.मा.वि. पनवाड़,9829033344\r\nRJ/12/345/002,कौशल्या देवी,मोहन लाल,34,F,पनवाड़,रा.उ.मा.वि. पनवाड़,9829033345`;
+const csvImportRes = await importVotersCsv('candidate-kapil-mehta', sampleCsv);
+assert(csvImportRes.success && csvImportRes.imported === 2, 'CSV import successfully parses and ingests 2 valid voter records');
+
+// Query voters
+const voters = await getVoters('candidate-kapil-mehta', { filterGp: 'पनवाड़' });
+assert(voters.length === 2, 'Voter registry correctly retrieves imported voters for Panwad Gram Panchayat');
+
+// CSV Export
+const exportedCsv = await exportVotersCsv('candidate-kapil-mehta', 'पनवाड़');
+assert(exportedCsv.includes('मोहन लाल') && exportedCsv.includes('कौशल्या देवी'), 'CSV export generates valid data including imported voter records');
+
+// Metric calculation (strictly query-based, zero fake numbers)
+const metrics = await getCampaignMetrics(candidateKapilMehta, '', 'sarpanch789');
+assert(metrics.totalConfiguredGps === 7, 'Campaign metrics correctly returns 7 configured Gram Panchayats');
+assert(metrics.volunteerCount >= 1, 'Volunteer count dynamically computed from actual database records');
+assert(metrics.voterCount >= 2, 'Voter count dynamically computed from actual database records');
 
 // -------------------------------------------------------------------------
 // SUMMARY

@@ -152,6 +152,12 @@ export function normalizeCandidateConfig(rawConfig) {
       { name: { hi: 'किसान कॉल सेन्टर', en: 'Kisan Call Centre' }, number: '1800-180-1551' }
     ],
     announcements: Array.isArray(rawConfig.announcements) ? rawConfig.announcements : [],
+    wardNumber: rawConfig.wardNumber || '',
+    editionName: rawConfig.editionName || null,
+    gramPanchayats: Array.isArray(rawConfig.gramPanchayats) ? rawConfig.gramPanchayats : [],
+    personalDetails: rawConfig.personalDetails || null,
+    educationTimeline: Array.isArray(rawConfig.educationTimeline) ? rawConfig.educationTimeline : [],
+    politicalJourney: Array.isArray(rawConfig.politicalJourney) ? rawConfig.politicalJourney : [],
     theme: {
       primaryColor: rawConfig.theme?.primaryColor || '#1b4332',
       accentColor: rawConfig.theme?.accentColor || '#d97706',

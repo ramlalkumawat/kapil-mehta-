@@ -4,11 +4,13 @@
  * and copyable tracking code receipt.
  */
 
-import { t } from '../locales/i18n.js';
+import { t, getLocalized } from '../locales/i18n.js';
 import { submitComplaint, validateComplaintInput } from '../services/complaintService.js';
 import activeCandidate from '../../config/active-candidate.js';
 
 export function renderComplaintModal() {
+  const gps = activeCandidate.gramPanchayats || [];
+
   return `
     <div id="modal-complaint" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="complaint-modal-heading">
       <div class="modal-container">
@@ -84,7 +86,23 @@ export function renderComplaintModal() {
               <div id="err-category" class="form-error" style="display: none;"></div>
             </div>
 
-            <!-- Ward / Locality -->
+            <!-- Gram Panchayat (Ward 22 Locations) -->
+            ${gps.length > 0 ? `
+              <div class="form-group">
+                <label for="complaint-gp" class="form-label">
+                  ${t('complaint.fields.gramPanchayat')} <span style="color: var(--color-danger);">*</span>
+                </label>
+                <select id="complaint-gp" name="gramPanchayat" class="form-select" required>
+                  <option value="">${t('complaint.fields.gramPanchayatPlaceholder')}</option>
+                  ${gps.map(g => `
+                    <option value="${getLocalized(g.name)}">${getLocalized(g.name)}</option>
+                  `).join('')}
+                </select>
+                <div id="err-gp" class="form-error" style="display: none;"></div>
+              </div>
+            ` : ''}
+
+            <!-- Ward / Locality / Village -->
             <div class="form-group">
               <label for="complaint-ward" class="form-label">
                 ${t('complaint.fields.ward')} <span style="color: var(--color-danger);">*</span>
@@ -261,11 +279,25 @@ export function initComplaintModalEvents() {
       e.preventDefault();
       clearErrors();
 
+      // Validate GP if present
+      if (form.gramPanchayat && !form.gramPanchayat.value) {
+        const el = document.getElementById('err-gp');
+        if (el) {
+          el.textContent = t('complaint.errors.gpRequired');
+          el.style.display = 'block';
+        }
+        return;
+      }
+
+      const gpVal = form.gramPanchayat ? form.gramPanchayat.value : '';
+      const wardVal = form.ward.value;
+      const combinedLocality = gpVal ? `${gpVal} (${wardVal})` : wardVal;
+
       const formData = {
         name: form.name.value,
         mobile: form.mobile.value,
         category: form.category.value,
-        ward: form.ward.value,
+        ward: combinedLocality,
         description: form.description.value,
         consent: form.consent.checked,
         _honeypot: form._honeypot.value

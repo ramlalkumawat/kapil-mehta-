@@ -13,24 +13,26 @@ export function renderHeader() {
   const candidateName = getLocalized(activeCandidate.name);
   const designation = getLocalized(activeCandidate.designation);
 
+  const editionName = activeCandidate.editionName ? getLocalized(activeCandidate.editionName) : t('appName');
+
   return `
     <header class="site-header" role="banner">
       <!-- Topmost Statutory Disclaimer Strip -->
       <div style="background-color: var(--color-primary-dark); color: #fef3c7; font-size: 0.72rem; padding: 4px 12px; text-align: center; font-weight: 500;">
-        <span>${t('governmentDisclaimerBadge')} | ${getLocalized(activeCandidate.village)}, ${getLocalized(activeCandidate.district)}</span>
+        <span>${t('governmentDisclaimerBadge')} | ${candidateName} • ${panchayatTitle}, ${getLocalized(activeCandidate.district)}</span>
       </div>
 
       <div class="container header-inner">
         <!-- Brand Emblem & Title -->
-        <a href="#home" class="brand-wrapper" aria-label="${panchayatTitle} - ${t('appName')}">
-          <div class="brand-emblem" aria-hidden="true">
+        <a href="#home" class="brand-wrapper" aria-label="${editionName}">
+          <div class="brand-emblem" aria-hidden="true" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); color: #fff;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
           </div>
           <div class="brand-info">
-            <span class="brand-name">${t('appName')}</span>
+            <span class="brand-name">${editionName}</span>
             <span class="brand-panchayat">${panchayatTitle} • ${designation}</span>
           </div>
         </a>

@@ -2,6 +2,30 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.1.0] - 2026-10-22
+### Added
+- **Kapil Mehta Candidate Edition**:
+  - Personalized profile for Kapil Mehta (District Council / Zila Parishad Member Candidate, Ward No. 22, Jhalawar, Rajasthan).
+  - Configured 7 Gram Panchayats: Akodiya, Sarkhandiya, Panwad, Bishan Khedi, Pakhrana, Layphal, Harigarh.
+  - Verified Personal Details: Native village Ganeshpura (Chonsla), PO Akodiya, Tehsil Khanpur, District Jhalawar, DOB 29 March 1993.
+  - Educational Qualifications timeline: Sangod, Jhalawar, B.Com (Commerce College, Kota), B.Ed. (Om Kothari College), M.Com Accounting (Univ. of Kota), M.Com Business (Commerce College, Kota).
+  - Chronological Political Journey (2014-2025): ABVP Kota University Secretary, 2017 Commerce College Candidate, 2018 ABVP Joint Secretary, 2019 ABVP Secretary, 2020 ABVP Division Co-convener & State Executive, 2021-2025 BJYM State Executive Member.
+- **Campaign Management System (`src/services/campaignService.js`)**:
+  - Gram Panchayat and Polling Booth management with configurable dynamic additions.
+  - Volunteer Management & village/booth assignment.
+  - Voter Registry with search, CSV Import with header auto-mapping, and CSV Export.
+  - Door-to-Door Field Survey & Visit Tracker with citizen sentiment classification.
+  - Campaign Task Assignment & follow-up with status toggles.
+  - Query-driven metrics calculation (Zero fake numbers or fabricated totals).
+  - Candidate photograph upload and local/backend synchronization.
+- **Design System & Palette Transformation**:
+  - Switched palette to dignified Rajasthan local election theme: Dark Maroon (`#800020`), Warm Saffron (`#d97706`), Off-White background (`#faf8f5`).
+  - Added CSS tokens and components for education timeline, political journey, and multi-tab campaign dashboard.
+- **Database & Multi-Tenant Migration**:
+  - `supabase/migrations/002_campaign_management_schema.sql` providing schema for locations, booths, volunteers, voters, field visits, and tasks with strict RLS isolation.
+- **Automated Test Suite Expansion**:
+  - Expanded `scripts/run-tests.js` from 29 to 47 passing tests (**47/47 Passed**).
+
 ## [1.0.0] - 2026-10-22
 ### Added
 - **Core Master Application Architecture**: Single master codebase customizable per candidate via `config/candidates/*.js`.

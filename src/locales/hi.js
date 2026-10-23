@@ -64,7 +64,20 @@ export default {
     experience: 'सामाजिक व प्रशासनिक अनुभव',
     socialWork: 'सामाजिक सरोकार एवं सेवा कार्य',
     verifiedAchievements: 'सत्यापित उपलब्धियां',
-    visionQuote: 'जनहित ही सर्वोपरि'
+    visionQuote: 'जनहित ही सर्वोपरि',
+    personalDetailsHeading: 'व्यक्तिगत परिचय (सत्यापित)',
+    labels: {
+      fullName: 'पूरा नाम',
+      dob: 'जन्म दिनांक',
+      nativeVillage: 'मूल ग्राम',
+      postOffice: 'डाकघर',
+      tehsil: 'तहसील',
+      district: 'जिला',
+      position: 'पद / चुनाव',
+      ward: 'वार्ड'
+    },
+    educationTimelineHeading: 'शैक्षणिक योग्यता विवरण',
+    politicalJourneyHeading: 'राजनैतिक एवं सामाजिक यात्रा (2014–2025)'
   },
 
   // Development Works
@@ -123,6 +136,8 @@ export default {
       categoryPlaceholder: '-- श्रेणी का चयन करें --',
       ward: 'वार्ड संख्या / ढाणी / मोहल्ला',
       wardPlaceholder: 'उदा. वार्ड 3, ढाणी बागावाली',
+      gramPanchayat: 'संबद्ध ग्राम पंचायत',
+      gramPanchayatPlaceholder: '-- ग्राम पंचायत चुनें --',
       description: 'समस्या का स्पष्ट एवं विस्तृत विवरण',
       descriptionPlaceholder: 'समस्या कब से है और किस स्थान पर है, विस्तार से लिखें...',
       photo: 'समस्या का फोटो (वैकल्पिक, अधिकतम 5MB)',
@@ -176,6 +191,7 @@ export default {
       nameRequired: 'कृपया अपना नाम दर्ज करें।',
       mobileInvalid: 'कृपया मान्य 10 अंकों का भारतीय मोबाइल नंबर दर्ज करें।',
       categoryRequired: 'कृपया समस्या की श्रेणी चुनें।',
+      gpRequired: 'कृपया संबंधित ग्राम पंचायत चुनें।',
       wardRequired: 'कृपया वार्ड संख्या अथवा मोहल्ला लिखें।',
       descTooShort: 'कृपया समस्या का विवरण कम से कम 15 अक्षरों में लिखें।',
       consentRequired: 'आगे बढ़ने के लिए सहमति देना अनिवार्य है।',

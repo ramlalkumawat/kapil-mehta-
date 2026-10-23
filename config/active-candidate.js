@@ -7,20 +7,22 @@
 import defaultConfig from './candidates/default.js';
 import candidate001 from './candidates/candidate-001.js';
 import candidate002 from './candidates/candidate-002.js';
+import candidateKapilMehta from './candidates/candidate-kapil-mehta.js';
 import { normalizeCandidateConfig, validateCandidateConfig } from './schema.js';
 
 const candidateRegistry = {
   'default': defaultConfig,
   'candidate-001': candidate001,
-  'candidate-002': candidate002
+  'candidate-002': candidate002,
+  'candidate-kapil-mehta': candidateKapilMehta
 };
 
-// Determine candidate ID from Vite env (fallback to candidate-001)
+// Determine candidate ID from Vite env (fallback to candidate-kapil-mehta)
 const requestedCandidateId = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_CANDIDATE_ID)
   ? import.meta.env.VITE_CANDIDATE_ID
-  : 'candidate-001';
+  : 'candidate-kapil-mehta';
 
-const rawConfig = candidateRegistry[requestedCandidateId] || candidateRegistry['candidate-001'] || defaultConfig;
+const rawConfig = candidateRegistry[requestedCandidateId] || candidateRegistry['candidate-kapil-mehta'] || candidate001 || defaultConfig;
 
 // Validate config
 const validation = validateCandidateConfig(rawConfig);
