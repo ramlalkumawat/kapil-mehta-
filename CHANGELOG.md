@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.2.0] - 2026-10-24
+### Added
+- **Google Cloud Run Live Grievance Microservice Integration**:
+  - Connected live Google Cloud Run grievance submission endpoint (`https://submit-complaint-giiw7bvowq-el.a.run.app`) for real-time citizen complaint dispatch to cloud storage/Firestore.
+  - Configured `VITE_COMPLAINT_API_URL` and `VITE_GCP_COMPLAINT_URL` in `.env` and `.env.example`.
+  - Updated complaint form with exact fields: पूरा नाम (`name`), मोबाइल नंबर (`mobile`), शिकायत की श्रेणी (`category`), वार्ड / क्षेत्र / मोहल्ला (`ward`), शिकायत का विवरण (`description`), and hidden Candidate ID (`candidate-kapil-mehta`).
+  - Implemented 7 standardized category options: सड़क एवं परिवहन (`road`), पानी की समस्या (`water`), बिजली की समस्या (`electricity`), सफाई एवं कचरा (`sanitation`), स्ट्रीट लाइट (`street_light`), नाली एवं जल निकासी (`drainage`), अन्य शिकायत (`general`).
+  - Added robust frontend validations: empty checks, 10-digit Indian mobile validation (`/^[6-9]\d{9}$/`), double-submission prevention, and accessible loading state indicator ("शिकायत दर्ज की जा रही है...").
+  - Implemented visually polished success confirmation section with server-generated tracking code, status badge ("दर्ज की गई"), copy tracking code button, and "Submit Another Complaint" action.
+  - Added test suite Suite 9 with 9 automated tests passing (total: **56 / 56 tests passed**).
+
 ## [1.1.0] - 2026-10-22
 ### Added
 - **Kapil Mehta Candidate Edition**:

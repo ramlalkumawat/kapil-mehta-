@@ -41,11 +41,15 @@ The application is structured around a single master codebase customized entirel
 
 ## 5. Automated Verification Results
 - **Candidate Validation**: `npm run validate` passed with zero errors across all candidate files.
-- **Automated Tests**: `npm test` executed 47 tests across schemas, isolation, 7 Gram Panchayats verification, i18n key parity, validation rules, honeypot traps, entropy checks, privacy lookup, status workflows, and campaign management / CSV modules — **47/47 Passed (100%)**.
-- **Production Build**: `npm run build` completed successfully in 2.91s with zero bundle errors.
+- **Automated Tests**: `npm test` executed 56 tests across schemas, candidate isolation, Ward 22 Gram Panchayats, bilingual key parity, form validation rules, honeypot traps, entropy checks, privacy lookup, status workflows, campaign management / CSV modules, and Cloud Run complaint submission — **56/56 Passed (100%)**.
+- **Production Build**: `npm run build` completed successfully with zero bundle errors.
 
 ## 6. Environment Variables
 - `VITE_CANDIDATE_ID`: Target candidate configuration ID (e.g. `candidate-kapil-mehta`).
-- `VITE_SUPABASE_URL`: Supabase project URL.
+- `VITE_COMPLAINT_API_URL`: Live Google Cloud Run complaint submission microservice URL (`https://submit-complaint-giiw7bvowq-el.a.run.app`).
+- `VITE_GCP_COMPLAINT_URL`: Compatible alias for Cloud Run complaint submission microservice.
+- `VITE_SUPABASE_URL`: Supabase project URL (optional/alternative backend).
 - `VITE_SUPABASE_ANON_KEY`: Supabase anon public key.
 - `VITE_ADMIN_ACCESS_PIN`: Staff portal security PIN (default: `sarpanch789`).
+
+

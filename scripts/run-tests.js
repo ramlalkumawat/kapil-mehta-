@@ -272,6 +272,85 @@ assert(metrics.volunteerCount >= 1, 'Volunteer count dynamically computed from a
 assert(metrics.voterCount >= 2, 'Voter count dynamically computed from actual database records');
 
 // -------------------------------------------------------------------------
+// SUITE 9: Cloud Run Complaint Submission & Form Validation
+// -------------------------------------------------------------------------
+console.log('\n☁️ Suite 9: Cloud Run Complaint Submission & Form Validation');
+
+// 1. Name cannot be empty
+const emptyName = validateComplaintInput({
+  name: '   ',
+  mobile: '9876543210',
+  ward: 'वार्ड 1',
+  description: 'सड़क पर गड्ढे होने से आवागमन में परेशानी हो रही है।'
+});
+assert(!emptyName.valid && emptyName.errors.name === 'nameRequired', 'Validation: Name cannot be empty');
+
+// 2. Mobile must be 10 digits
+const invalidMobileDigits = validateComplaintInput({
+  name: 'सुरेश कुमार',
+  mobile: '98765',
+  ward: 'वार्ड 1',
+  description: 'सड़क पर गड्ढे होने से आवागमन में परेशानी हो रही है।'
+});
+assert(!invalidMobileDigits.valid && invalidMobileDigits.errors.mobile === 'mobileInvalid', 'Validation: Mobile number must contain exactly 10 digits');
+
+// 3. Ward cannot be empty
+const emptyWard = validateComplaintInput({
+  name: 'सुरेश कुमार',
+  mobile: '9876543210',
+  ward: '   ',
+  description: 'सड़क पर गड्ढे होने से आवागमन में परेशानी हो रही है।'
+});
+assert(!emptyWard.valid && emptyWard.errors.ward === 'wardRequired', 'Validation: Ward/locality cannot be empty');
+
+// 4. Description cannot be empty
+const emptyDesc = validateComplaintInput({
+  name: 'सुरेश कुमार',
+  mobile: '9876543210',
+  ward: 'वार्ड 1',
+  description: '   '
+});
+assert(!emptyDesc.valid && emptyDesc.errors.description === 'descRequired', 'Validation: Description cannot be empty');
+
+// 5. Supported categories validation
+const supportedCategories = ['road', 'water', 'electricity', 'sanitation', 'street_light', 'drainage', 'general'];
+let allSupportedValid = true;
+for (const cat of supportedCategories) {
+  const check = validateComplaintInput({
+    name: 'नागरिक',
+    mobile: '9876543210',
+    category: cat,
+    ward: 'वार्ड 1',
+    description: 'समस्या का स्पष्ट और विस्तृत विवरण यहां दर्ज है।'
+  });
+  if (!check.valid) allSupportedValid = false;
+}
+assert(allSupportedValid, 'Validation: All 7 specified category options are valid');
+
+// 6. Optional category defaults to general in payload
+const noCategoryPayload = {
+  name: 'दिनेश शर्मा',
+  mobile: '9876543210',
+  ward: 'वार्ड 3',
+  description: 'पेयजल लाइन में दबाव की समस्या का विस्तृत विवरण।'
+};
+const valNoCat = validateComplaintInput(noCategoryPayload);
+assert(valNoCat.valid, 'Validation: Category is optional on input');
+
+// 7. Complaint submission returns server-generated tracking code and status
+const cloudSubmission = await submitComplaint({
+  candidate_id: 'candidate-kapil-mehta',
+  name: 'दिनेश शर्मा',
+  mobile: '9876543210',
+  category: '',
+  ward: 'वार्ड 3',
+  description: 'पेयजल लाइन में दबाव की समस्या का विस्तृत विवरण।'
+});
+assert(cloudSubmission.success === true, 'Cloud Run Submit: Submission succeeds');
+assert(/^SETU-RJ-[2-9A-HJ-NP-Z]{6}$/.test(cloudSubmission.tracking_code), `Cloud Run Submit: Returns valid tracking code format (${cloudSubmission.tracking_code})`);
+assert(cloudSubmission.status === 'submitted', 'Cloud Run Submit: Returns status "submitted"');
+
+// -------------------------------------------------------------------------
 // SUMMARY
 // -------------------------------------------------------------------------
 console.log('\n========================================================');

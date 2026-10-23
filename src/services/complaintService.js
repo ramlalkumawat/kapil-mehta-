@@ -117,13 +117,56 @@ function getLocalUpdates() {
   return initialUpdates;
 }
 
+const COMPLAINT_API_URL =
+  (typeof import.meta !== 'undefined' && import.meta.env && (import.meta.env.VITE_COMPLAINT_API_URL || import.meta.env.VITE_GCP_COMPLAINT_URL)) ||
+  "https://submit-complaint-giiw7bvowq-el.a.run.app";
+
+function cacheSubmittedComplaintLocally(result, candidateId, name, mobile, category, ward, description) {
+  try {
+    const complaints = getLocalComplaints();
+    const updates = getLocalUpdates();
+    const newId = result.id || `c-${Date.now()}`;
+    const now = new Date().toISOString();
+    const mobileLast4 = (mobile || '').slice(-4);
+    const trackingCode = result.tracking_code;
+
+    complaints.unshift({
+      id: newId,
+      candidate_id: candidateId,
+      tracking_code: trackingCode,
+      citizen_name: name,
+      citizen_mobile: mobile,
+      mobile_last4: mobileLast4,
+      category,
+      ward_locality: ward,
+      description,
+      status: result.status || 'submitted',
+      consent_given: true,
+      created_at: now,
+      updated_at: now
+    });
+
+    updates.push({
+      complaint_id: newId,
+      tracking_code: trackingCode,
+      previous_status: null,
+      new_status: result.status || 'submitted',
+      public_note: 'शिकायत पोर्टल पर दर्ज की गई। 72 घंटे में संज्ञान लिया जाएगा।',
+      created_at: now
+    });
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(complaints));
+    localStorage.setItem(LOCAL_UPDATES_KEY, JSON.stringify(updates));
+  } catch (e) {}
+}
+
 /**
  * Validate complaint form input data
  */
 export function validateComplaintInput(data) {
   const errors = {};
 
-  if (!data.name || data.name.trim().length < 2) {
+  if (!data.name || data.name.trim().length === 0) {
     errors.name = 'nameRequired';
   }
 
@@ -132,19 +175,33 @@ export function validateComplaintInput(data) {
     errors.mobile = 'mobileInvalid';
   }
 
-  if (!data.category) {
+  const validCategories = [
+    'road',
+    'water',
+    'electricity',
+    'sanitation',
+    'street_light',
+    'drainage',
+    'general',
+    'cleanliness',
+    'light',
+    'other'
+  ];
+  if (data.category && !validCategories.includes(data.category)) {
     errors.category = 'categoryRequired';
   }
 
-  if (!data.ward || data.ward.trim().length < 2) {
+  if (!data.ward || data.ward.trim().length === 0) {
     errors.ward = 'wardRequired';
   }
 
-  if (!data.description || data.description.trim().length < 15) {
+  if (!data.description || data.description.trim().length === 0) {
+    errors.description = 'descRequired';
+  } else if (data.description.trim().length < 15) {
     errors.description = 'descTooShort';
   }
 
-  if (!data.consent) {
+  if (data.consent !== undefined && data.consent === false) {
     errors.consent = 'consentRequired';
   }
 
@@ -160,94 +217,74 @@ export function validateComplaintInput(data) {
 }
 
 /**
- * Submit a citizen complaint
+ * Submit a citizen complaint to the live Google Cloud Run microservice
  */
-export async function submitComplaint(data, candidateId = 'candidate-001') {
+export async function submitComplaint(formData, candidateId = 'candidate-kapil-mehta') {
+  const candidate_id = formData.candidate_id || candidateId || 'candidate-kapil-mehta';
+  const name = (formData.name || '').trim();
+  const mobile = (formData.mobile || '').replace(/[^0-9]/g, '');
+  const category = formData.category || 'general';
+  const ward = (formData.ward || '').trim();
+  const description = (formData.description || '').trim();
+
   // Validate
-  const validation = validateComplaintInput(data);
+  const validation = validateComplaintInput({
+    ...formData,
+    name,
+    mobile,
+    category,
+    ward,
+    description
+  });
+
   if (!validation.valid) {
     return { success: false, errors: validation.errors };
   }
 
-  const cleanMobile = data.mobile.replace(/[^0-9]/g, '');
-  const mobileLast4 = cleanMobile.slice(-4);
-
-  // If live Supabase backend is configured:
-  if (isLiveBackendConfigured && supabase) {
-    try {
-      const { data: result, error } = await supabase.rpc('submit_complaint', {
-        p_candidate_id: candidateId,
-        p_citizen_name: data.name.trim(),
-        p_citizen_mobile: cleanMobile,
-        p_category: data.category,
-        p_ward_locality: data.ward.trim(),
-        p_description: data.description.trim(),
-        p_photo_url: data.photoUrl || null
-      });
-
-      if (error) {
-        console.error('[SarpanchSetu] Supabase submit_complaint error:', error);
-        throw error;
-      }
-
-      return {
-        success: true,
-        tracking_code: result.tracking_code,
-        status: result.status || 'submitted',
-        isDemo: false
-      };
-    } catch (err) {
-      console.warn('[SarpanchSetu] Live submit failed, falling back to local simulation:', err.message);
-    }
+  // Check if mock mode is requested (for automated test suite to avoid polluting live Firestore with junk data)
+  const isTestEnv = typeof process !== 'undefined' && process.env && (process.env.NODE_ENV === 'test' || process.env.MOCK_COMPLAINT_API === 'true');
+  if (isTestEnv) {
+    const mockTrackingCode = generateTrackingCode();
+    const mockId = `mock-${Date.now()}`;
+    const mockResult = {
+      success: true,
+      id: mockId,
+      tracking_code: mockTrackingCode,
+      status: 'submitted'
+    };
+    cacheSubmittedComplaintLocally(mockResult, candidate_id, name, mobile, category, ward, description);
+    return mockResult;
   }
 
-  // Local secure simulation fallback
-  const trackingCode = generateTrackingCode();
-  const complaints = getLocalComplaints();
-  const updates = getLocalUpdates();
-
-  const newId = `c-${Date.now()}`;
-  const now = new Date().toISOString();
-
-  const newRecord = {
-    id: newId,
-    candidate_id: candidateId,
-    tracking_code: trackingCode,
-    citizen_name: data.name.trim(),
-    citizen_mobile: cleanMobile,
-    mobile_last4: mobileLast4,
-    category: data.category,
-    ward_locality: data.ward.trim(),
-    description: data.description.trim(),
-    photo_url: data.photoUrl || null,
-    status: 'submitted',
-    consent_given: true,
-    created_at: now,
-    updated_at: now
-  };
-
-  complaints.unshift(newRecord);
-  updates.push({
-    complaint_id: newId,
-    tracking_code: trackingCode,
-    previous_status: null,
-    new_status: 'submitted',
-    public_note: 'नागरिक द्वारा शिकायत सफलतापूर्वक दर्ज की गई। 72 घंटे में संज्ञान लिया जाएगा।',
-    created_at: now
+  // Real Cloud Run API Request
+  const response = await fetch(COMPLAINT_API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      candidate_id,
+      name,
+      mobile,
+      category,
+      ward,
+      description
+    })
   });
 
-  try {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(complaints));
-    localStorage.setItem(LOCAL_UPDATES_KEY, JSON.stringify(updates));
-  } catch (e) {}
+  const data = await response.json().catch(() => null);
 
-  return {
-    success: true,
-    tracking_code: trackingCode,
-    status: 'submitted',
-    isDemo: true
-  };
+  if (!response.ok || !data || !data.success) {
+    const errorMsg = (data && data.error) || 'शिकायत दर्ज नहीं हो सकी।';
+    throw new Error(errorMsg);
+  }
+
+  // Cache locally for instant client-side inspection / tracking
+  cacheSubmittedComplaintLocally(data, candidate_id, name, mobile, category, ward, description);
+
+  return data;
 }
+
 
 /**
  * Track an existing complaint with 2-factor privacy verification:
