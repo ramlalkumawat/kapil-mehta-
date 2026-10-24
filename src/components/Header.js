@@ -43,6 +43,7 @@ export function renderHeader() {
           <a href="#profile" class="nav-link">${t('nav.profile')}</a>
           <a href="#works" class="nav-link">${t('nav.works')}</a>
           <a href="#vision" class="nav-link">${t('nav.vision')}</a>
+          <a href="#gallery" class="nav-link">${t('nav.gallery')}</a>
           <a href="#services" class="nav-link">${t('nav.services')}</a>
           <a href="#schemes" class="nav-link">${t('nav.schemes')}</a>
           <a href="#announcements" class="nav-link">${t('nav.announcements')}</a>

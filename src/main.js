@@ -21,6 +21,7 @@ import { renderCitizenServices, initCitizenServicesEvents } from './components/C
 import { renderProfileSection } from './components/ProfileSection.js';
 import { renderWorksSection, initWorksEvents } from './components/WorksSection.js';
 import { renderVisionSection } from './components/VisionSection.js';
+import { renderGallerySection, initGalleryEvents } from './components/GallerySection.js';
 import { renderSchemesSection, initSchemesEvents } from './components/SchemesSection.js';
 import { renderAnnouncementsSection } from './components/AnnouncementsSection.js';
 import { renderComplaintModal, initComplaintModalEvents } from './components/ComplaintModal.js';
@@ -67,6 +68,7 @@ function renderApp() {
       ${renderProfileSection()}
       ${renderWorksSection()}
       ${renderVisionSection()}
+      ${renderGallerySection()}
       ${renderSchemesSection()}
       ${renderAnnouncementsSection()}
     </main>
@@ -90,6 +92,7 @@ function renderApp() {
   initBottomNavEvents();
   initCitizenServicesEvents();
   initWorksEvents();
+  initGalleryEvents();
   initSchemesEvents();
   initComplaintModalEvents();
   initComplaintTrackerEvents();

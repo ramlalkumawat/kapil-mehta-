@@ -85,6 +85,14 @@
   - Added new category option `suggestion`: "💡 विकास सुझाव / नवाचार विचार".
   - Updated form labels and placeholders to collect both civic issues and constructive village development ideas.
   - All 58 tests passing and production build verified.
+- [x] Phase 23: Dedicated Photo Gallery Section ("फोटो गैलरी" / "Photo Gallery"):
+  - Copied 5 authentic user-provided event & movement photos into `public/gallery/` (`gallery-1` to `gallery-5`).
+  - Implemented interactive `GallerySection.js` component with responsive CSS card grid, hover zoom effects, event badge, location tag, and interactive fullscreen Lightbox preview with keyboard (`Escape`) & backdrop dismissal.
+  - Added `gallery` schema normalization in `config/schema.js` and defined gallery data in `config/candidates/candidate-kapil-mehta.js`.
+  - Added navigation links in sticky Header (`src/components/Header.js`) and Footer (`src/components/Footer.js`).
+  - Added bilingual translations in `src/locales/hi.js` and `src/locales/en.js` with 100% key parity.
+  - Added automated test assertion in `scripts/run-tests.js`; 59 of 59 tests passing (**100%**).
+  - Production build verified with Vite (`npm run build`).
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.

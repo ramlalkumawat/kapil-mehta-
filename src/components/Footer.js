@@ -59,6 +59,7 @@ export function renderFooter() {
               <li><a href="#profile">${t('nav.profile')}</a></li>
               <li><a href="#works">${t('nav.works')}</a></li>
               <li><a href="#vision">${t('nav.vision')}</a></li>
+              <li><a href="#gallery">${t('nav.gallery')}</a></li>
               <li><a href="#services">${t('nav.services')}</a></li>
               <li><a href="#schemes">${t('nav.schemes')}</a></li>
               <li><a href="#announcements">${t('nav.announcements')}</a></li>

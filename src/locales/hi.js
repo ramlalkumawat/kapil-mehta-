@@ -16,6 +16,7 @@ export default {
     works: 'विकास कार्य',
     vision: 'दृष्टिकोण व प्राथमिकताएं',
     services: 'नागरिक सेवाएं',
+    gallery: 'फोटो गैलरी',
     complaints: 'शिकायत व सुझाव',
     schemes: 'सरकारी योजनाएं',
     announcements: 'सूचनाएं',
@@ -107,6 +108,15 @@ export default {
     visionHeading: 'हमारा विजन (दीर्घकालिक लक्ष्य)',
     missionHeading: 'हमारा मिशन (कार्ययोजना)',
     prioritiesHeading: 'प्रमुख 6 विकास स्तंभ'
+  },
+
+  // Photo Gallery
+  gallery: {
+    tag: 'फोटो गैलरी',
+    title: 'जनसेवा, संघर्ष एवं जनसंवाद झलकियां',
+    subtitle: 'छात्र आंदोलन, वरिष्ठ नेतृत्व मार्गदर्शन, युवा पदयात्रा एवं सामाजिक सरोकार के ऐतिहासिक क्षण',
+    viewImage: 'फोटो बड़ा देखें',
+    closeLightbox: 'बंद करें'
   },
 
   // Citizen Services Panel

@@ -100,6 +100,7 @@ assert(candidateKapilMehta.educationTimeline.length === 6, 'Candidate has exactl
 assert(candidateKapilMehta.politicalJourney.length === 6, 'Candidate has exactly 6 chronological political milestones (2014-2025)');
 assert(candidateKapilMehta.contact.phone === '+91-9785899641', 'Candidate contact phone verified as +91-9785899641');
 assert(candidateKapilMehta.contact.whatsapp === '919785899641', 'Candidate contact WhatsApp verified as 919785899641');
+assert(Array.isArray(candidateKapilMehta.gallery) && candidateKapilMehta.gallery.length === 5, 'Candidate has exactly 5 verified gallery photos');
 
 // -------------------------------------------------------------------------
 // SUITE 3: i18n Translation Dictionary Key Parity

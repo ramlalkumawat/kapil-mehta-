@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.7] - 2026-10-24
+### Added
+- **Dedicated Photo Gallery Section ("फोटो गैलरी" / "Photo Gallery")**:
+  - Added 5 authentic event & movement photographs of Kapil Mehta to `public/gallery/`:
+    1. `gallery-1-abvp-movement.jpg`: छात्रवृत्ति व शोधवृत्ति अधिकार धरना — ABVP Kota.
+    2. `gallery-2-shivraj-chouhan.jpg`: केंद्रीय कृषि मंत्री शिवराज सिंह चौहान से शिष्टाचार भेंट व संवाद.
+    3. `gallery-3-youth-rally.jpg`: ग्रामीण युवा जनसंवाद एवं जागरूकता पदयात्रा.
+    4. `gallery-4-public-dialogue.jpg`: वरिष्ठजनों एवं नागरिकों से आशीर्वाद व संवाद.
+    5. `gallery-5-student-rights.jpg`: राजकीय वाणिज्य महाविद्यालय कोटा — छात्र अधिकार आंदोलन.
+  - Implemented interactive `GallerySection.js` component with responsive CSS card grid, hover zoom effects, event badge, location indicator, and interactive fullscreen Lightbox preview with keyboard (`Escape`) & backdrop dismissal.
+  - Added `gallery` field to `config/schema.js` and configured candidate data in `config/candidates/candidate-kapil-mehta.js`.
+  - Added Photo Gallery navigation links in sticky Header (`src/components/Header.js`) and quick links in Footer (`src/components/Footer.js`).
+  - Added bilingual translation keys with 100% parity across `src/locales/hi.js` and `src/locales/en.js`.
+  - Added verification test assertion in `scripts/run-tests.js` (59/59 tests passing).
+
 ## [1.3.6] - 2026-10-24
 ### Changed
 - **Expanded Grievance Section to 'Citizen Complaints & Suggestions' ("नागरिक शिकायत एवं सुझाव")**:

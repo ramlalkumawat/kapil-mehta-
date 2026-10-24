@@ -16,6 +16,7 @@ export default {
     works: 'Development Works',
     vision: 'Vision & Priorities',
     services: 'Citizen Services',
+    gallery: 'Photo Gallery',
     complaints: 'Grievance & Suggestions',
     schemes: 'Govt Schemes',
     announcements: 'Notices',
@@ -107,6 +108,15 @@ export default {
     visionHeading: 'Our Long-Term Vision',
     missionHeading: 'Our Action Mission',
     prioritiesHeading: 'Core 6 Development Pillars'
+  },
+
+  // Photo Gallery
+  gallery: {
+    tag: 'Photo Gallery',
+    title: 'Service, Struggle & Leadership Moments',
+    subtitle: 'Photographic milestones of student movements, senior leadership guidance, youth rallies, and grassroots engagement',
+    viewImage: 'Expand Photo',
+    closeLightbox: 'Close'
   },
 
   // Citizen Services Panel

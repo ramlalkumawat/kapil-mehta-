@@ -385,6 +385,80 @@ export default {
   // Announcements / Public Notices (Coming soon)
   announcements: [],
 
+  // Photo Gallery — Public Outreach, Student Agitation & Senior Leadership Meetings
+  gallery: [
+    {
+      id: 'gal-1',
+      image: '/gallery/gallery-1-abvp-movement.jpg',
+      title: {
+        hi: 'छात्रवृत्ति व शोधवृत्ति अधिकार आंदोलन',
+        en: 'Student Scholarship & Rights Agitation'
+      },
+      description: {
+        hi: 'कोटा में छात्रवृत्ति व शोधवृत्ति तुरंत जारी करवाने हेतु एबीवीपी के बैनर तले विशाल छात्र धरना एवं नेतृत्व।',
+        en: 'Leading student sit-in and rights demonstration in Kota demanding timely scholarship disbursement.'
+      },
+      tag: { hi: 'छात्र आंदोलन', en: 'Student Movement' },
+      location: { hi: 'कोटा', en: 'Kota' }
+    },
+    {
+      id: 'gal-2',
+      image: '/gallery/gallery-2-shivraj-chouhan.jpg',
+      title: {
+        hi: 'वरिष्ठ नेतृत्व: शिवराज सिंह चौहान जी से भेंट',
+        en: 'Meeting with Senior Leader Shivraj Singh Chouhan'
+      },
+      description: {
+        hi: 'केंद्रीय मंत्री एवं पूर्व मुख्यमंत्री शिवराज सिंह चौहान जी से आत्मीय भेंट व जनहितकारी मुद्दों पर मार्गदर्शन।',
+        en: 'Heartfelt interaction and policy guidance with Union Minister & Former CM Shivraj Singh Chouhan.'
+      },
+      tag: { hi: 'नेतृत्व मार्गदर्शन', en: 'Leadership Guidance' },
+      location: { hi: 'राजस्थान / भोपाल', en: 'Rajasthan / Bhopal' }
+    },
+    {
+      id: 'gal-3',
+      image: '/gallery/gallery-3-youth-rally.jpg',
+      title: {
+        hi: 'युवा जनसंपर्क एवं पदयात्रा',
+        en: 'Youth Outreach & Public March'
+      },
+      description: {
+        hi: 'क्षेत्र के जागरूक युवाओं व ग्रामीणों के साथ सशक्त जनसंवाद, पदयात्रा एवं संगठन समन्वय।',
+        en: 'Mass public march and dialogue rallying local rural youth and community elders.'
+      },
+      tag: { hi: 'जनसंवाद व पदयात्रा', en: 'Public Outreach' },
+      location: { hi: 'झालावाड़ / खानपुर', en: 'Jhalawar / Khanpur' }
+    },
+    {
+      id: 'gal-4',
+      image: '/gallery/gallery-4-public-dialogue.jpg',
+      title: {
+        hi: 'सामाजिक सरोकार एवं वरिष्ठजनों से संवाद',
+        en: 'Community Dialogue & Blessings from Elders'
+      },
+      description: {
+        hi: 'धार्मिक व सामाजिक कार्यक्रमों में क्षेत्रवासियों से भेंट, वरिष्ठजनों का आशीर्वाद एवं समस्याओं पर संवाद।',
+        en: 'Seeking guidance and blessings from local elders and representatives during community gatherings.'
+      },
+      tag: { hi: 'सामाजिक सरोकार', en: 'Community Service' },
+      location: { hi: 'क्षेत्रीय जनसंवाद', en: 'Ward 22' }
+    },
+    {
+      id: 'gal-5',
+      image: '/gallery/gallery-5-student-rights.jpg',
+      title: {
+        hi: 'राजकीय वाणिज्य महाविद्यालय में छात्र शक्ति प्रदर्शन',
+        en: 'Student Demonstration at Govt Commerce College'
+      },
+      description: {
+        hi: 'राजकीय वाणिज्य महाविद्यालय कोटा में छात्र हितों व पारदर्शी प्रशासनिक व्यवस्था हेतु अग्रिम पंक्ति में संघर्ष।',
+        en: 'Spearheading campus activism and student welfare reforms at Govt. Commerce College, Kota.'
+      },
+      tag: { hi: 'कॉलेज नेतृत्व', en: 'Campus Leadership' },
+      location: { hi: 'कोटा', en: 'Kota' }
+    }
+  ],
+
   theme: {
     primaryColor: '#800020', // Dark Maroon
     accentColor: '#d97706',  // Warm Saffron

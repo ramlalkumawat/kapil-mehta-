@@ -158,6 +158,7 @@ export function normalizeCandidateConfig(rawConfig) {
     personalDetails: rawConfig.personalDetails || null,
     educationTimeline: Array.isArray(rawConfig.educationTimeline) ? rawConfig.educationTimeline : [],
     politicalJourney: Array.isArray(rawConfig.politicalJourney) ? rawConfig.politicalJourney : [],
+    gallery: Array.isArray(rawConfig.gallery) ? rawConfig.gallery : [],
     theme: {
       primaryColor: rawConfig.theme?.primaryColor || '#1b4332',
       accentColor: rawConfig.theme?.accentColor || '#d97706',
