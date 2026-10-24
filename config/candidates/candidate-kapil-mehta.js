@@ -385,10 +385,86 @@ export default {
   // Announcements / Public Notices (Coming soon)
   announcements: [],
 
-  // Photo Gallery — Public Outreach, Student Agitation & Senior Leadership Meetings
+  // Photo Gallery — Public Outreach, Election Campaign, Student Agitation & Senior Leadership
   gallery: [
     {
-      id: 'gal-1',
+      id: 'gal-camp-1',
+      category: 'campaign',
+      image: '/gallery/gallery-6-elder-namaste.jpg',
+      title: {
+        hi: 'चुनाव अभियान: जनसंपर्क व विनम्र अभिवादन',
+        en: 'Election Campaign: Public Outreach & Greetings'
+      },
+      description: {
+        hi: 'जिला परिषद वार्ड संख्या 22 में चुनाव अभियान के तहत गांव-गांव, घर-घर सघन जनसंपर्क कर मतदाताओं व ग्रामवासियों का विनम्र अभिवादन।',
+        en: 'Door-to-door public outreach and respectful greetings to villagers during active election campaigning in Ward 22.'
+      },
+      tag: { hi: 'जनसंपर्क अभियान', en: 'Public Outreach' },
+      location: { hi: 'जिला परिषद वार्ड 22', en: 'Zila Parishad Ward 22' }
+    },
+    {
+      id: 'gal-camp-2',
+      category: 'campaign',
+      image: '/gallery/gallery-7-elder-blessings.jpg',
+      title: {
+        hi: 'वरिष्ठजनों से विजय आशीर्वाद एवं संवाद',
+        en: 'Blessings for Victory from Village Elders'
+      },
+      description: {
+        hi: 'जनसंपर्क व चुनाव प्रचार के दौरान गांव के पूज्य बुजुर्गों एवं वरिष्ठ नागरिकों के चरण स्पर्श कर समर्थन व विजय का आशीर्वाद प्राप्त करते हुए।',
+        en: 'Seeking blessings, guidance, and electoral support from revered village elders during public campaign outreach.'
+      },
+      tag: { hi: 'वरिष्ठ आशीर्वाद', en: 'Elders Blessings' },
+      location: { hi: 'ग्राम पंचायत अंचल', en: 'Gram Panchayat Region' }
+    },
+    {
+      id: 'gal-camp-3',
+      category: 'campaign',
+      image: '/gallery/gallery-8-village-chaupal.jpg',
+      title: {
+        hi: 'जनसंपर्क चौपाल व विशाल जनसंवाद सभा',
+        en: 'Village Chaupal & Public Dialogue Meeting'
+      },
+      description: {
+        hi: 'गांव के मंदिर प्रांगण व चौपाल पर आयोजित विशाल जनसंवाद सभा में ग्रामवासियों को संबोधित करते हुए एवं समस्याएं व विकास सुझाव सुनते हुए।',
+        en: 'Addressing a large village gathering and chaupal dialogue at temple premises to listen to citizen issues and suggestions.'
+      },
+      tag: { hi: 'चौपाल जनसंवाद', en: 'Chaupal Dialogue' },
+      location: { hi: 'चौपाल / मंदिर प्रांगण', en: 'Village Chaupal' }
+    },
+    {
+      id: 'gal-camp-4',
+      category: 'campaign',
+      image: '/gallery/gallery-9-padayatra-campaign.jpg',
+      title: {
+        hi: 'विशाल जनसंपर्क पदयात्रा एवं जनसमर्थन',
+        en: 'Massive Campaign Padayatra & Public Support'
+      },
+      description: {
+        hi: 'वार्ड 22 के गांवों में युवा साथियों व ग्रामवासियों के साथ विशाल चुनाव प्रचार पदयात्रा, ध्वज एवं कटआउट के साथ जन-जन तक दस्तक।',
+        en: 'Energetic campaign padayatra across villages of Ward 22 with local youth and supporters spreading awareness.'
+      },
+      tag: { hi: 'चुनाव प्रचार पदयात्रा', en: 'Campaign Padayatra' },
+      location: { hi: 'वार्ड 22 संपर्क मार्ग', en: 'Ward 22 Rural Road' }
+    },
+    {
+      id: 'gal-camp-5',
+      category: 'campaign',
+      image: '/gallery/gallery-10-community-welcome.jpg',
+      title: {
+        hi: 'साफा व पुष्पमालाओं से भव्य जनअभिनंदन',
+        en: 'Grand Felicitation with Safa & Garlands'
+      },
+      description: {
+        hi: 'चुनाव अभियान दौरे के दौरान ग्रामवासियों व अग्रजों द्वारा पारंपरिक राजस्थानी साफा पहनाकर एवं पुष्पमालाओं से आत्मीय स्वागत व समर्थन।',
+        en: 'Heartfelt felicitation with traditional Rajasthani safa and marigold garlands by village elders during campaign tour.'
+      },
+      tag: { hi: 'भव्य जनअभिनंदन', en: 'Grand Welcome' },
+      location: { hi: 'ग्रामीण जनसंपर्क', en: 'Rural Campaign Tour' }
+    },
+    {
+      id: 'gal-lead-1',
+      category: 'leadership',
       image: '/gallery/gallery-1-abvp-movement.jpg',
       title: {
         hi: 'छात्रवृत्ति व शोधवृत्ति अधिकार आंदोलन',
@@ -402,7 +478,8 @@ export default {
       location: { hi: 'कोटा', en: 'Kota' }
     },
     {
-      id: 'gal-2',
+      id: 'gal-lead-2',
+      category: 'leadership',
       image: '/gallery/gallery-2-shivraj-chouhan.jpg',
       title: {
         hi: 'वरिष्ठ नेतृत्व: शिवराज सिंह चौहान जी से भेंट',
@@ -416,7 +493,8 @@ export default {
       location: { hi: 'राजस्थान / भोपाल', en: 'Rajasthan / Bhopal' }
     },
     {
-      id: 'gal-3',
+      id: 'gal-lead-3',
+      category: 'leadership',
       image: '/gallery/gallery-3-youth-rally.jpg',
       title: {
         hi: 'युवा जनसंपर्क एवं पदयात्रा',
@@ -430,7 +508,8 @@ export default {
       location: { hi: 'झालावाड़ / खानपुर', en: 'Jhalawar / Khanpur' }
     },
     {
-      id: 'gal-4',
+      id: 'gal-lead-4',
+      category: 'leadership',
       image: '/gallery/gallery-4-public-dialogue.jpg',
       title: {
         hi: 'सामाजिक सरोकार एवं वरिष्ठजनों से संवाद',
@@ -444,7 +523,8 @@ export default {
       location: { hi: 'क्षेत्रीय जनसंवाद', en: 'Ward 22' }
     },
     {
-      id: 'gal-5',
+      id: 'gal-lead-5',
+      category: 'leadership',
       image: '/gallery/gallery-5-student-rights.jpg',
       title: {
         hi: 'राजकीय वाणिज्य महाविद्यालय में छात्र शक्ति प्रदर्शन',

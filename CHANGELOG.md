@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.8] - 2026-10-24
+### Added
+- **Public Outreach & Election Campaign Photo Integration ("जनसंपर्क एवं चुनाव अभियान")**:
+  - Integrated 5 newly uploaded authentic election campaign photos of Kapil Mehta in Zila Parishad Ward 22:
+    1. `gallery-6-elder-namaste.jpg`: चुनाव अभियान — जनसंपर्क व विनम्र अभिवादन (Door-to-door outreach & greetings).
+    2. `gallery-7-elder-blessings.jpg`: वरिष्ठजनों से विजय आशीर्वाद व संवाद (Blessings from village elders).
+    3. `gallery-8-village-chaupal.jpg`: जनसंपर्क चौपाल व विशाल जनसंवाद सभा (Temple premises public address & dialogue).
+    4. `gallery-9-padayatra-campaign.jpg`: विशाल जनसंपर्क पदयात्रा एवं जनसमर्थन (Outreach march with youth and flags).
+    5. `gallery-10-community-welcome.jpg`: साफा व पुष्पमालाओं से भव्य जनअभिनंदन (Traditional safa & floral welcome by elders).
+  - Enhanced `GallerySection.js` with interactive category filter pills:
+    - "सभी फोटो" (`filterAll` — 10 photos)
+    - "जनसंपर्क एवं चुनाव अभियान" (`filterCampaign` — 5 active campaign photos with special 🗳️ badge)
+    - "छात्र आंदोलन व नेतृत्व" (`filterLeadership` — 5 leadership photos)
+  - Added Prev/Next arrow buttons (`‹` / `›`) and arrow keyboard navigation (`ArrowLeft` / `ArrowRight`) to fullscreen Lightbox.
+  - Added bilingual translations in `src/locales/hi.js` and `src/locales/en.js`.
+  - Added test assertions in `scripts/run-tests.js` (60/60 tests passing).
+
 ## [1.3.7] - 2026-10-24
 ### Added
 - **Dedicated Photo Gallery Section ("फोटो गैलरी" / "Photo Gallery")**:

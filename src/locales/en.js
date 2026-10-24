@@ -113,8 +113,11 @@ export default {
   // Photo Gallery
   gallery: {
     tag: 'Photo Gallery',
-    title: 'Service, Struggle & Leadership Moments',
-    subtitle: 'Photographic milestones of student movements, senior leadership guidance, youth rallies, and grassroots engagement',
+    title: 'Public Outreach, Election Campaign & Service Highlights',
+    subtitle: 'Active door-to-door public outreach, election campaign padayatra, chaupal dialogue, blessings from village elders, and student leadership milestones in Zila Parishad Ward 22',
+    filterAll: 'All Photos',
+    filterCampaign: 'Outreach & Campaign',
+    filterLeadership: 'Leadership & Student Movement',
     viewImage: 'Expand Photo',
     closeLightbox: 'Close'
   },
