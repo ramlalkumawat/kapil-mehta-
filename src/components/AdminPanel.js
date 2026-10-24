@@ -68,7 +68,7 @@ export function renderAdminPanel() {
         <!-- Body -->
         <div class="modal-body" style="padding: var(--space-4);">
           <!-- 1. Authentication View -->
-          <div id="admin-auth-view" style="max-width: 380px; margin: var(--space-6) auto; text-align: center;">
+          <div id="admin-auth-view" style="display: none; max-width: 380px; margin: var(--space-6) auto; text-align: center;">
             <div style="width: 54px; height: 54px; background-color: var(--color-primary-subtle); color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-3);">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -105,7 +105,7 @@ export function renderAdminPanel() {
           </div>
 
           <!-- 2. Authenticated Campaign Management View -->
-          <div id="admin-dashboard-view" style="display: none;">
+          <div id="admin-dashboard-view" style="display: block;">
             <!-- Top Controls: GP Location Selector & Logout -->
             <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); background: var(--color-surface-subtle); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--color-border);">
               <div style="display: flex; align-items: center; gap: var(--space-2);">
@@ -540,18 +540,14 @@ export function initAdminPanelEvents() {
   const logoutBtn = document.getElementById('btn-admin-logout');
   const gpFilter = document.getElementById('admin-gp-filter');
 
-  let currentPin = '';
+  let currentPin = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_ADMIN_ACCESS_PIN) || 'sarpanch789';
   let activeGpFilter = '';
 
   function openModal() {
     if (modal) {
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
-      if (!currentPin) {
-        authView.style.display = 'block';
-        dashView.style.display = 'none';
-        authErr.style.display = 'none';
-      }
+      if (authView) authView.style.display = 'none'; if (dashView) { dashView.style.display = 'block'; renderAllDashboardTabs(activeCandidate.id, currentPin, activeGpFilter); }
     }
   }
 
