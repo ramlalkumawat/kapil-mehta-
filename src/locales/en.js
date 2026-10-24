@@ -5,8 +5,8 @@
 
 export default {
   // App Identity
-  appName: 'Sarpanch Setu',
-  appSubtitle: 'Gram Panchayat Citizen Services & Engagement Bridge',
+  appName: 'Kapil Mehta',
+  appSubtitle: 'Zila Parishad Citizen Welfare & Engagement Platform',
   governmentDisclaimerBadge: 'Independent Citizen Forum • Non-Government',
 
   // Navigation
@@ -74,7 +74,9 @@ export default {
       tehsil: 'Tehsil',
       district: 'District',
       position: 'Position / Office',
-      ward: 'Ward'
+      ward: 'Ward',
+      mobile: 'Mobile Number',
+      whatsapp: 'WhatsApp'
     },
     educationTimelineHeading: 'Educational Qualifications',
     politicalJourneyHeading: 'Political & Leadership Journey (2014–2025)'
@@ -119,6 +121,13 @@ export default {
     schemesCardDesc: 'Eligibility rules, required document checklists, and direct official application portals.',
     announcementsCardTitle: 'Gram Sabha & Public Notices',
     announcementsCardDesc: 'Vaccination schedules, Panchayat assemblies, administrative circulars, and dates.'
+  },
+
+  // Announcements
+  announcements: {
+    comingSoonBadge: 'Coming Soon',
+    comingSoonTitle: 'Public Notices Coming Soon',
+    comingSoonDesc: 'Upcoming Gram Sabha meetings, public outreach dates, vaccination camps, and official notices will be published here shortly.'
   },
 
   // Complaint System
@@ -251,7 +260,7 @@ export default {
 
   // Footer & Disclaimers
   footer: {
-    aboutTitle: 'About Sarpanch Setu',
+    aboutTitle: 'About Kapil Mehta',
     officeTitle: 'Office & Secretariat Address',
     quickLinksTitle: 'Quick Links',
     emergencyTitle: 'Emergency Help Contacts',

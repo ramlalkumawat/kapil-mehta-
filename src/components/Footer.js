@@ -46,6 +46,7 @@ export function renderFooter() {
             <div style="display: flex; flex-direction: column; gap: 6px; color: #d1d5db;">
               <div>📍 <strong>${t('footer.officeTitle')}:</strong> ${officeAddress}</div>
               <div>📞 <strong>संपर्क:</strong> <a href="tel:${phone.replace(/[^0-9+]/g, '')}" style="color: #6ee7b7;">${phone}</a></div>
+              ${activeCandidate.contact?.whatsapp ? `<div>💬 <strong>व्हाट्सएप:</strong> <a href="https://wa.me/${activeCandidate.contact.whatsapp.replace(/[^0-9]/g, '')}" target="_blank" rel="noopener noreferrer" style="color: #6ee7b7;">+91 ${activeCandidate.contact.whatsapp.replace(/[^0-9]/g, '').slice(-10)}</a></div>` : ''}
               ${email ? `<div>✉️ <strong>ईमेल:</strong> <a href="mailto:${email}" style="color: #6ee7b7;">${email}</a></div>` : ''}
             </div>
           </div>
@@ -90,7 +91,7 @@ export function renderFooter() {
             &copy; ${new Date().getFullYear()} ${panchayatName}. ${t('footer.copyright')}.
           </div>
           <div style="display: flex; align-items: center; gap: var(--space-4);">
-            <span>सरपंच सेतु v1.0 (राजस्थान)</span>
+            <span>${t('appName')} v1.0 (राजस्थान)</span>
             <span>•</span>
             <span style="color: #10b981;">● सुरक्षित एवं सत्यापित</span>
           </div>

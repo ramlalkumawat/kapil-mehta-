@@ -59,11 +59,27 @@
   - Enforced width safeguards (`width: 100%; max-width: 100%; overflow-x: hidden; box-sizing: border-box; min-width: 0;`) on `html`, `body`, `#app`, `main`, and `.container` in `src/styles/base.css`.
   - Verified zero horizontal overflow across 320px, 360px, 375px, 390px, 412px, 430px, and desktop 1280px via CDP test runner.
   - All 56 tests passing and production build succeeded.
-- [x] Phase 18: Candidate Photo Display — Uncropped Portrait Card:
-  - Removed circular clipPath and concentric circles from `public/kapil-mehta.svg` and `public/candidate-avatar.svg`.
-  - Restructured vector SVG containers into portrait cards (`viewBox="0 0 400 520"`, `<rect rx="16" ry="16">`) with maroon and gold borders.
-  - Removed `border-radius: 50%` circular styling across all screen sizes in `src/styles/components.css` and adjusted `.hero-avatar` to a 3:4 portrait card aspect ratio.
-  - Verified in browser viewports across mobile (375px) and desktop (1280px).
+- [x] Phase 18: Candidate Photo Display — Square Format (1:1) & Face Alignment:
+  - Converted vector SVG containers (`public/kapil-mehta.svg`, `public/candidate-avatar.svg`, `public/kapil-mehta-namaste.svg`) to 1:1 square frame (`viewBox="0 0 500 500"`).
+  - Used `preserveAspectRatio="xMidYMin slice"` ensuring the candidate's face, smile, and Namaste pose are prominently and completely visible at the top without clipping.
+  - Formatted the photo container with rounded square card styling (`rx="18"`) with maroon and saffron gold border accents.
+  - Configured `.hero-avatar` and `.profile-photo-wrapper` across all breakpoints to exact square dimensions (`200x200px` desktop, `170x170px` tablet, `150x150px` mobile, `125x125px` extra-small mobile) with `object-position: top center`.
+  - Verified visual rendering via headless Chrome screenshot preview.
+
+- [x] Phase 19: Configured Official Mobile & WhatsApp Number (`9785899641`):
+  - Updated `config/candidates/candidate-kapil-mehta.js` contact phone (`+91-9785899641`) and WhatsApp (`919785899641`).
+  - Hero action buttons (Direct Call & WhatsApp), Sticky FAB buttons, Footer contact, and Personal Details section all route to `9785899641`.
+  - Added test assertions; 58 of 58 automated tests passing (**100%**).
+  - Production build verified with Vite (`npm run build`).
+- [x] Phase 20: Portal-Wide Rebranding from 'Sarpanch Setu' to 'Kapil Mehta':
+  - Replaced all visible brand names, page titles, header emblem labels, footer badges, meta tags, and PWA manifest names with 'Kapil Mehta' / 'कपिल मेहता'.
+  - Updated `config/candidates/candidate-kapil-mehta.js`, `src/main.js`, `src/locales/hi.js`, `src/locales/en.js`, `src/components/Footer.js`, `index.html`, and `manifest.webmanifest`.
+  - All 58 tests passing and production build succeeded.
+- [x] Phase 21: Announcements ("सूचनाएं") Emptied with 'Coming Soon' State:
+  - Removed placeholder notices from `config/candidates/candidate-kapil-mehta.js`.
+  - Added modern 'Coming Soon / जल्द उपलब्ध' card in `src/components/AnnouncementsSection.js`.
+  - Added bilingual translations in `src/locales/hi.js` and `src/locales/en.js`.
+  - All 58 tests passing and production build verified.
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.

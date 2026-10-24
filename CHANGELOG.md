@@ -2,14 +2,41 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.5] - 2026-10-24
+### Changed
+- **Announcements / Public Notices Section ("सूचनाएं") Emptied with 'Coming Soon' State**:
+  - Emptied `announcements: []` in candidate profile `config/candidates/candidate-kapil-mehta.js`.
+  - Updated `src/components/AnnouncementsSection.js` to render a polished, accessible 'Coming Soon / जल्द उपलब्ध' card instead of mock placeholder notices.
+  - Added bilingual translations in `src/locales/hi.js` and `src/locales/en.js`.
+
+## [1.3.4] - 2026-10-24
+### Changed
+- **Replaced 'Sarpanch Setu' / 'सरपंच सेतु' with 'Kapil Mehta' / 'कपिल मेहता' Throughout Portal**:
+  - Updated candidate edition name in `config/candidates/candidate-kapil-mehta.js` (`editionName: { hi: 'कपिल मेहता', en: 'Kapil Mehta' }`), updating brand title in sticky Header.
+  - Updated main document title in `src/main.js` to `${candidateName} • ${panchayat} — कपिल मेहता (Kapil Mehta)`.
+  - Updated `appName` and `aboutTitle` in both Hindi ([`src/locales/hi.js`](file:///c:/Users/ramla/OneDrive/Desktop/KAPIL-MEHTA/src/locales/hi.js)) and English ([`src/locales/en.js`](file:///c:/Users/ramla/OneDrive/Desktop/KAPIL-MEHTA/src/locales/en.js)).
+  - Updated footer branding in `src/components/Footer.js` to dynamic `${t('appName')} v1.0 (राजस्थान)`.
+  - Updated HTML `<title>` and `<meta>` tags in `index.html` to reflect Kapil Mehta Zila Parishad Ward 22.
+  - Updated PWA manifest name & short_name in `public/manifest.webmanifest` and `manifest.webmanifest`.
+  - Updated offline fallback page `<title>` in `public/offline.html` and `offline.html`.
+
+## [1.3.3] - 2026-10-24
+### Changed
+- **Configured Official Contact Mobile & WhatsApp Number (`9785899641`)**:
+  - Updated candidate profile `config/candidates/candidate-kapil-mehta.js` with phone (`+91-9785899641`) and WhatsApp (`919785899641`).
+  - Added direct WhatsApp URL link (`https://wa.me/919785899641`) under `socialLinks`.
+  - Added contact mobile & WhatsApp directly into `personalDetails` and displayed them with clickable quick links in the Profile Personal Details card (`src/components/ProfileSection.js`).
+  - Hero action buttons (Direct Call & WhatsApp message), Sticky Floating Actions (FAB), and Site Footer now instantly route to `9785899641`.
+  - Added bilingual translation keys in `src/locales/hi.js` and `src/locales/en.js`.
+  - Added automated test assertions in `scripts/run-tests.js` (58/58 tests passing).
+
 ## [1.3.2] - 2026-10-24
 ### Changed
-- **Candidate Photo Display — Removed Circular Crop & Restored Portrait Card**:
-  - Removed circular clipping path (`<circle cx="250" cy="250" r="230"/>`) and concentric circular borders from `public/kapil-mehta.svg` and `public/candidate-avatar.svg`.
-  - Converted SVG assets into high-resolution rectangular portrait frames (`viewBox="0 0 400 520"`, `<rect rx="16" ry="16">`) with royal Rajasthani maroon (`#800020`) and saffron gold (`#d97706`) accents.
-  - Removed `border-radius: 50%` circular restrictions from `.hero-avatar` and `.hero-avatar img` across mobile and desktop styles in `src/styles/components.css`.
-  - Updated candidate hero photo frame to a natural 3:4 portrait card aspect ratio (`200x260px` desktop, `150x195px` mobile) with subtle rounded corners (`16px`).
-  - Candidate's full photo now displays naturally and prominently without being cropped into a circle.
+- **Candidate Photo Display — Square Format (1:1) with Top-Aligned Face Preservation**:
+  - Converted candidate vector SVGs (`public/kapil-mehta.svg`, `public/candidate-avatar.svg`, `public/kapil-mehta-namaste.svg`) to exact 1:1 square aspect ratio (`viewBox="0 0 500 500"`).
+  - Applied `preserveAspectRatio="xMidYMin slice"` ensuring the candidate's face, smile, hair, and Namaste pose are 100% visible and centered at the top without vertical crop.
+  - Formatted the photo card with royal Rajasthani maroon (`#800020`) and saffron gold (`#d97706`) rounded borders (`rx="18"`).
+  - Configured `.hero-avatar` and `.profile-photo-wrapper` to square dimensions across all breakpoints (`200x200px` desktop, `170x170px` tablet, `150x150px` mobile, `125x125px` extra-small mobile) with `object-position: top center`.
 
 ## [1.3.1] - 2026-10-24
 ### Fixed

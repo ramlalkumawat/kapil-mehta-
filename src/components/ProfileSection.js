@@ -87,6 +87,28 @@ export function renderProfileSection() {
                   <span class="detail-label">${t('profile.labels.ward')}</span>
                   <strong class="detail-val" style="color: var(--color-accent);">${getLocalized(personalDetails.ward)}</strong>
                 </div>
+
+                ${(personalDetails.mobile || activeCandidate.contact?.phone) ? `
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.mobile')}</span>
+                  <strong class="detail-val">
+                    <a href="tel:${(personalDetails.mobile || activeCandidate.contact?.phone).replace(/[^0-9+]/g, '')}" style="color: var(--color-primary); text-decoration: none; font-weight: 700;">
+                      ${personalDetails.mobile || activeCandidate.contact?.phone}
+                    </a>
+                  </strong>
+                </div>
+                ` : ''}
+
+                ${(personalDetails.whatsapp || activeCandidate.contact?.whatsapp) ? `
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.whatsapp')}</span>
+                  <strong class="detail-val">
+                    <a href="https://wa.me/${(personalDetails.whatsapp || activeCandidate.contact?.whatsapp).replace(/[^0-9]/g, '')}" target="_blank" rel="noopener noreferrer" style="color: #059669; text-decoration: none; font-weight: 700;">
+                      +91 ${(personalDetails.whatsapp || activeCandidate.contact?.whatsapp).replace(/[^0-9]/g, '').slice(-10)}
+                    </a>
+                  </strong>
+                </div>
+                ` : ''}
               </div>
             </div>
           </div>

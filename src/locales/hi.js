@@ -5,8 +5,8 @@
 
 export default {
   // App Identity
-  appName: 'सरपंच सेतु',
-  appSubtitle: 'ग्राम पंचायत नागरिक सेवा एवं संवाद सेतु',
+  appName: 'कपिल मेहता',
+  appSubtitle: 'जिला परिषद नागरिक सेवा एवं जनसंवाद मंच',
   governmentDisclaimerBadge: 'स्वतंत्र नागरिक संवाद मंच • गैर-सरकारी',
 
   // Navigation
@@ -74,7 +74,9 @@ export default {
       tehsil: 'तहसील',
       district: 'जिला',
       position: 'पद / चुनाव',
-      ward: 'वार्ड'
+      ward: 'वार्ड',
+      mobile: 'मोबाइल नंबर',
+      whatsapp: 'व्हाट्सएप'
     },
     educationTimelineHeading: 'शैक्षणिक योग्यता विवरण',
     politicalJourneyHeading: 'राजनैतिक एवं सामाजिक यात्रा (2014–2025)'
@@ -119,6 +121,13 @@ export default {
     schemesCardDesc: 'पात्रता नियम, आवश्यक दस्तावेज सूची एवं आधिकारिक आवेदन लिंक।',
     announcementsCardTitle: 'ग्राम सभा व सार्वजनिक सूचनाएं',
     announcementsCardDesc: 'टीकाकरण शिविर, ग्राम सभा बैठकें, सरकारी आदेश व महत्वपूर्ण तिथियां।'
+  },
+
+  // Announcements
+  announcements: {
+    comingSoonBadge: 'जल्द उपलब्ध • Coming Soon',
+    comingSoonTitle: 'सार्वजनिक सूचनाएं शीघ्र प्रकाशित की जाएंगी',
+    comingSoonDesc: 'आगामी ग्राम सभा बैठकें, जनसुनवाई कार्यक्रम, टीकाकरण शिविर व सरकारी आदेश जल्द ही यहां उपलब्ध होंगे।'
   },
 
   // Complaint System
@@ -251,7 +260,7 @@ export default {
 
   // Footer & Disclaimers
   footer: {
-    aboutTitle: 'सरपंच सेतु के बारे में',
+    aboutTitle: 'कपिल मेहता के बारे में',
     officeTitle: 'कार्यालय व संपर्क पता',
     quickLinksTitle: 'त्वरित लिंक',
     emergencyTitle: 'आपातकालीन सहायता नंबर',

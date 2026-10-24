@@ -1,14 +1,14 @@
 /**
  * Candidate Configuration — Kapil Mehta (कपिल मेहता)
  * District Council (Zila Parishad) Ward No. 22, Jhalawar, Rajasthan
- * Edition: Sarpanch Setu – Kapil Mehta Edition
+ * Edition: Kapil Mehta (कपिल मेहता)
  */
 
 export default {
   id: 'candidate-kapil-mehta',
   editionName: {
-    hi: 'सरपंच सेतु – कपिल मेहता संस्करण',
-    en: 'Sarpanch Setu – Kapil Mehta Edition'
+    hi: 'कपिल मेहता',
+    en: 'Kapil Mehta'
   },
   name: {
     hi: 'कपिल मेहता',
@@ -81,7 +81,9 @@ export default {
     ward: {
       hi: 'वार्ड संख्या 22',
       en: 'Ward No. 22'
-    }
+    },
+    mobile: '+91-9785899641',
+    whatsapp: '919785899641'
   },
 
   // 7 Configured Gram Panchayats for Ward No. 22 (Configurable, editable in campaign management)
@@ -358,8 +360,8 @@ export default {
   ],
 
   contact: {
-    phone: '+91-9876543210',
-    whatsapp: '919876543210',
+    phone: '+91-9785899641',
+    whatsapp: '919785899641',
     email: '',
     officeAddress: {
       hi: 'कार्यालय: गणेशपुरा (चोंसला), डाकघर: अकोदिया, तहसील: खानपुर, जिला: झालावाड़, राजस्थान',
@@ -367,7 +369,9 @@ export default {
     }
   },
 
-  socialLinks: {},
+  socialLinks: {
+    whatsapp: 'https://wa.me/919785899641'
+  },
 
   emergencyNumbers: [
     { name: { hi: 'जिला नियंत्रण कक्ष झालावाड़', en: 'District Control Room Jhalawar' }, number: '07432-230491' },
@@ -378,21 +382,8 @@ export default {
     { name: { hi: 'बिजली शिकायत (JVVNL)', en: 'Electricity Helpline' }, number: '1800-180-6507' }
   ],
 
-  announcements: [
-    {
-      id: 'ann-km-1',
-      date: '2026-10-22',
-      title: {
-        hi: 'जिला परिषद वार्ड संख्या 22: जनसंपर्क एवं जनसुनवाई अभियान प्रारंभ',
-        en: 'Zila Parishad Ward 22: Public Outreach & Grievance Listening Drive'
-      },
-      content: {
-        hi: 'अकोदिया, सरखंडिया, पनवाड़, बिशन खेड़ी, पखराना, लायफल एवं हरीगढ़ ग्राम पंचायतों में समस्याओं के समाधान व विकास चर्चा हेतु जनसंवाद अभियान जारी।',
-        en: 'Ongoing public dialogue and grievance documentation across all seven Gram Panchayats.'
-      },
-      badge: { hi: 'जनसंवाद', en: 'Outreach' }
-    }
-  ],
+  // Announcements / Public Notices (Coming soon)
+  announcements: [],
 
   theme: {
     primaryColor: '#800020', // Dark Maroon

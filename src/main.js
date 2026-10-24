@@ -46,7 +46,7 @@ function applyCandidateTheme() {
   // Update document title dynamically
   const candidateName = getLocalized(activeCandidate.name);
   const panchayat = getLocalized(activeCandidate.panchayatName);
-  document.title = `${candidateName} • ${panchayat} — सरपंच सेतु (Sarpanch Setu)`;
+  document.title = `${candidateName} • ${panchayat} — कपिल मेहता (Kapil Mehta)`;
 }
 
 // Assemble full application markup

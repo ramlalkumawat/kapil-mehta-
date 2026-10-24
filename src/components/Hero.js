@@ -27,7 +27,7 @@ export function renderHero() {
           <!-- Candidate Photograph / Avatar (.SVG File) -->
           <div class="hero-avatar-wrapper">
             <div class="hero-avatar" aria-label="${name}">
-              <img src="${photo}" alt="${name}" loading="eager" width="200" height="260" />
+              <img src="${photo}" alt="${name}" loading="eager" width="200" height="200" />
             </div>
           </div>
 

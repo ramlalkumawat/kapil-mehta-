@@ -98,6 +98,8 @@ assert(candidateKapilMehta.personalDetails.nativeVillage.hi === 'गणेशप
 assert(candidateKapilMehta.personalDetails.tehsil.hi === 'खानपुर', 'Candidate tehsil verified as Khanpur');
 assert(candidateKapilMehta.educationTimeline.length === 6, 'Candidate has exactly 6 verified educational qualifications');
 assert(candidateKapilMehta.politicalJourney.length === 6, 'Candidate has exactly 6 chronological political milestones (2014-2025)');
+assert(candidateKapilMehta.contact.phone === '+91-9785899641', 'Candidate contact phone verified as +91-9785899641');
+assert(candidateKapilMehta.contact.whatsapp === '919785899641', 'Candidate contact WhatsApp verified as 919785899641');
 
 // -------------------------------------------------------------------------
 // SUITE 3: i18n Translation Dictionary Key Parity

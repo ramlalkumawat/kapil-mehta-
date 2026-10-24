@@ -1,12 +1,12 @@
 {
-  "name": "सरपंच सेतु — ग्राम पंचायत नागरिक सेवा",
-  "short_name": "सरपंच सेतु",
-  "description": "राजस्थान ग्राम पंचायत जनसुनवाई, नागरिक सेवा एवं संवाद सेतु",
+  "name": "कपिल मेहता — जिला परिषद नागरिक सेवा",
+  "short_name": "कपिल मेहता",
+  "description": "कपिल मेहता — जिला परिषद वार्ड संख्या 22 (झालावाड़) जनसुनवाई, नागरिक सेवा एवं जनसंवाद मंच",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f8f6f0",
-  "theme_color": "#1b4332",
+  "background_color": "#faf8f5",
+  "theme_color": "#800020",
   "lang": "hi",
   "icons": [
     {
