@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.2] - 2026-10-24
+### Changed
+- **Candidate Photo Display — Removed Circular Crop & Restored Portrait Card**:
+  - Removed circular clipping path (`<circle cx="250" cy="250" r="230"/>`) and concentric circular borders from `public/kapil-mehta.svg` and `public/candidate-avatar.svg`.
+  - Converted SVG assets into high-resolution rectangular portrait frames (`viewBox="0 0 400 520"`, `<rect rx="16" ry="16">`) with royal Rajasthani maroon (`#800020`) and saffron gold (`#d97706`) accents.
+  - Removed `border-radius: 50%` circular restrictions from `.hero-avatar` and `.hero-avatar img` across mobile and desktop styles in `src/styles/components.css`.
+  - Updated candidate hero photo frame to a natural 3:4 portrait card aspect ratio (`200x260px` desktop, `150x195px` mobile) with subtle rounded corners (`16px`).
+  - Candidate's full photo now displays naturally and prominently without being cropped into a circle.
+
 ## [1.3.1] - 2026-10-24
 ### Fixed
 - **Mobile Responsive Layout & Viewport Width Bug**:

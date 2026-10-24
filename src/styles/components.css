@@ -302,7 +302,7 @@
 
 @media (min-width: 768px) {
   .hero-grid {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 210px 1fr;
     gap: var(--space-8);
   }
 }
@@ -313,24 +313,30 @@
 }
 
 .hero-avatar {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 235px;
   border-radius: var(--radius-lg);
   border: 3px solid #ffffff;
   box-shadow: var(--shadow-md);
-  background-color: var(--color-primary-subtle);
+  background-color: var(--color-surface);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary);
   overflow: hidden;
   position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-avatar:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 @media (min-width: 768px) {
   .hero-avatar {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 260px;
   }
 }
 
@@ -339,6 +345,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  border-radius: inherit;
 }
 
 .hero-content {
@@ -1244,13 +1251,13 @@
   }
 
   .hero-avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+    width: 150px;
+    height: 195px;
+    border-radius: var(--radius-lg);
   }
 
   .hero-avatar img {
-    border-radius: 50%;
+    border-radius: var(--radius-lg);
     object-fit: cover;
   }
 
@@ -1375,8 +1382,9 @@
   }
 
   .hero-avatar {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 170px;
+    border-radius: var(--radius-md);
   }
 
   .hero-name {
@@ -1392,8 +1400,9 @@
 /* Tablets & Foldables (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
   .hero-avatar {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 220px;
+    border-radius: var(--radius-lg);
   }
 
   .hero-actions-row {
@@ -1415,7 +1424,13 @@
 /* Tablets (768px to 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-grid {
-    grid-template-columns: 190px 1fr;
+    grid-template-columns: 200px 1fr;
+  }
+
+  .hero-avatar {
+    width: 190px;
+    height: 247px;
+    border-radius: var(--radius-lg);
   }
 
   .services-grid {

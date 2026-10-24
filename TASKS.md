@@ -59,6 +59,11 @@
   - Enforced width safeguards (`width: 100%; max-width: 100%; overflow-x: hidden; box-sizing: border-box; min-width: 0;`) on `html`, `body`, `#app`, `main`, and `.container` in `src/styles/base.css`.
   - Verified zero horizontal overflow across 320px, 360px, 375px, 390px, 412px, 430px, and desktop 1280px via CDP test runner.
   - All 56 tests passing and production build succeeded.
+- [x] Phase 18: Candidate Photo Display — Uncropped Portrait Card:
+  - Removed circular clipPath and concentric circles from `public/kapil-mehta.svg` and `public/candidate-avatar.svg`.
+  - Restructured vector SVG containers into portrait cards (`viewBox="0 0 400 520"`, `<rect rx="16" ry="16">`) with maroon and gold borders.
+  - Removed `border-radius: 50%` circular styling across all screen sizes in `src/styles/components.css` and adjusted `.hero-avatar` to a 3:4 portrait card aspect ratio.
+  - Verified in browser viewports across mobile (375px) and desktop (1280px).
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.
