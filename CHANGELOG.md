@@ -18,6 +18,12 @@ All notable changes to this project are documented in this file.
   - Safe-area bottom padding for iOS notch and home bars.
   - 16px font on inputs to prevent iOS Safari auto-zoom.
   - Responsive modals with bottom-sheet appearance on mobile.
+- **Sticky Scroll WhatsApp & Phone Call Floating Buttons (FAB)**:
+  - Added persistent floating contact buttons dock (`src/components/FloatingActions.js`) that stays accessible as citizens scroll through the website.
+  - Instant one-tap WhatsApp chat with pre-filled greeting message.
+  - Direct telephone call trigger with candidate's contact number.
+  - WhatsApp subtle pulse micro-animation and smooth hover lift effects.
+  - Adaptive layout: expanded pill on desktop, thumb-friendly circular buttons on mobile without obstructing the mobile navigation bar.
 
 ## [1.2.0] - 2026-10-24
 ### Added

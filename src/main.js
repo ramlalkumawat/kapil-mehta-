@@ -25,6 +25,7 @@ import { renderSchemesSection, initSchemesEvents } from './components/SchemesSec
 import { renderAnnouncementsSection } from './components/AnnouncementsSection.js';
 import { renderComplaintModal, initComplaintModalEvents } from './components/ComplaintModal.js';
 import { renderComplaintTracker, initComplaintTrackerEvents } from './components/ComplaintTracker.js';
+import { renderFloatingActions, initFloatingActionsEvents } from './components/FloatingActions.js';
 import { renderFooter } from './components/Footer.js';
 
 // Apply candidate custom theme colors if specified
@@ -76,6 +77,9 @@ function renderApp() {
     <!-- Mobile Bottom Navigation -->
     ${renderBottomNav()}
 
+    <!-- Floating Scroll WhatsApp & Call Buttons (FAB) -->
+    ${renderFloatingActions()}
+
     <!-- Modals & Overlays -->
     ${renderComplaintModal()}
     ${renderComplaintTracker()}
@@ -89,6 +93,7 @@ function renderApp() {
   initSchemesEvents();
   initComplaintModalEvents();
   initComplaintTrackerEvents();
+  initFloatingActionsEvents();
 }
 
 // Initial mount
