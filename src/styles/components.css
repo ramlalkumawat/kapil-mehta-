@@ -935,6 +935,111 @@
   border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
+.profile-cards-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  width: 100%;
+  min-width: 0;
+}
+
+.profile-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.profile-card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-base);
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.profile-details-body {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.profile-photo-wrapper {
+  width: 140px;
+  height: 175px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--color-primary-subtle);
+  background-color: var(--color-surface-subtle);
+}
+
+.profile-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.personal-details-grid {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: var(--space-3);
+}
+
+@media (max-width: 640px) {
+  .profile-card {
+    padding: var(--space-4);
+  }
+
+  .profile-details-body {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .profile-photo-wrapper {
+    width: 130px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .personal-details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-card {
+    padding: var(--space-3);
+  }
+
+  .personal-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .personal-detail-item {
   background-color: var(--color-surface-subtle);
   border: 1px solid var(--color-border-light);
@@ -943,6 +1048,8 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
+  word-break: break-word;
 }
 
 .detail-label {
@@ -956,12 +1063,15 @@
 .detail-val {
   font-size: var(--font-size-sm);
   color: var(--color-primary-dark);
+  word-break: break-word;
 }
 
 .education-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: var(--space-3);
+  width: 100%;
+  min-width: 0;
 }
 
 .edu-card {
@@ -1023,13 +1133,15 @@
   display: flex;
   gap: var(--space-3);
   align-items: flex-start;
+  width: 100%;
+  min-width: 0;
 }
 
 .journey-year-col {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 80px;
+  min-width: 70px;
   flex-shrink: 0;
 }
 
@@ -1063,6 +1175,8 @@
   border-radius: var(--radius-md);
   padding: var(--space-3);
   flex: 1;
+  min-width: 0;
+  word-break: break-word;
 }
 
 .journey-role {

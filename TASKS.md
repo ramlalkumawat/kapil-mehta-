@@ -51,12 +51,14 @@
   - Removed `@supabase/supabase-js` package dependency, reducing bundle footprint.
   - Removed `src/services/supabase.js` and `supabase/` migrations.
   - Cleaned up environment variables and service worker references.
-- [x] Phase 16: Admin Decoupling, SVG Candidate Photo & Multi-Device Responsiveness:
-  - Removed admin panel modal and lock button from public citizen portal.
-  - Converted and embedded candidate photograph into self-contained vector SVG assets (`public/kapil-mehta.svg`, `public/kapil-mehta-namaste.svg`).
-  - Added full multi-device responsive rules covering extra small mobile (320px–360px), standard mobile (up to 480px), foldables/tablets (481px–767px), portrait tablets (768px–1023px), and desktop (1024px+).
-  - Production build bundle size reduced by ~75 kB.
-  - All 56 automated tests passing (100%).
+- [x] Phase 17: Mobile Responsive Layout & Viewport Width Debugging:
+  - Diagnosed exact root cause using headless Chrome DevTools Protocol (CDP) metrics across mobile viewports: CSS flex/grid min-content expansion in `ProfileSection.js` forcing document width to 478px, causing a 25% empty gap on the right.
+  - Refactored `ProfileSection.js` from rigid inline flex wrappers to responsive mobile-first classes (`.profile-cards-stack`, `.profile-card`, `.profile-details-body`, `.profile-photo-wrapper`, `.personal-details-grid`).
+  - Added responsive CSS in `src/styles/components.css` with auto-fit `minmax(min(100%, 180px), 1fr)` and breakpoint column switching at `<= 640px` and `<= 360px`.
+  - Replaced fixed minimum widths in `src/styles/components.css` (`.education-grid`), `VisionSection.js`, and `AnnouncementsSection.js` with fluid `minmax(min(100%, Xpx), 1fr)`.
+  - Enforced width safeguards (`width: 100%; max-width: 100%; overflow-x: hidden; box-sizing: border-box; min-width: 0;`) on `html`, `body`, `#app`, `main`, and `.container` in `src/styles/base.css`.
+  - Verified zero horizontal overflow across 320px, 360px, 375px, 390px, 412px, 430px, and desktop 1280px via CDP test runner.
+  - All 56 tests passing and production build succeeded.
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.

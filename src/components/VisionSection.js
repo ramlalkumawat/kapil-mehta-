@@ -39,7 +39,7 @@ export function renderVisionSection() {
       </div>
 
       <!-- Vision & Mission Banner -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-6); margin-bottom: var(--space-8); width: 100%; min-width: 0;">
         <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); border-top: 4px solid var(--color-primary); box-shadow: var(--shadow-sm);">
           <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">

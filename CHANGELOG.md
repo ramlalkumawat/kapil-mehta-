@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.1] - 2026-10-24
+### Fixed
+- **Mobile Responsive Layout & Viewport Width Bug**:
+  - Diagnosed and resolved the root cause of the mobile layout issue where page content occupied only ~75% of the viewport with a white gap on the right.
+  - Identified CSS Flexbox/Grid min-content expansion in `ProfileSection.js` (inline flex containing photo next to an unconstrained grid `minmax(200px, 1fr)` with 48px padding, forcing `#profile` scrollWidth to 478px on 320px–430px viewports).
+  - Refactored `ProfileSection.js` into responsive CSS classes (`.profile-cards-stack`, `.profile-card`, `.profile-details-body`, `.profile-photo-wrapper`, `.personal-details-grid`) with mobile-first column wrapping.
+  - Added responsive CSS definitions in `src/styles/components.css` using `minmax(min(100%, 180px), 1fr)` and mobile-breakpoint stacking for screens `<= 640px` and `<= 360px`.
+  - Updated `education-grid` in `src/styles/components.css` from fixed `minmax(260px, 1fr)` to `repeat(auto-fit, minmax(min(100%, 240px), 1fr))`.
+  - Updated grid containers in `VisionSection.js` and `AnnouncementsSection.js` to use `minmax(min(100%, 280px), 1fr)` and `min-width: 0; width: 100%`.
+  - Enforced `width: 100%; max-width: 100%; overflow-x: hidden;` across `html`, `body`, `#app`, and `main` in `src/styles/base.css`, along with `box-sizing: border-box; min-width: 0;` on `.container`.
+  - Added `word-break: break-word` on long text and top disclaimer strip in `Header.js`.
+  - Automated CDP testing verified zero overflow (`scrollWidth === innerWidth`) at 320px, 360px, 375px, 390px, 412px, 430px, and desktop 1280px.
+
 ## [1.3.0] - 2026-10-24
 ### Changed & Removed
 - **Removed Admin Panel from Public Citizen Portal**:

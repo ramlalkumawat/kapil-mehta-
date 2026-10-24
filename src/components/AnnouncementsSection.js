@@ -24,7 +24,7 @@ export function renderAnnouncementsSection() {
         </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-4);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-4); width: 100%; min-width: 0;">
         ${notices.map(notice => {
           const dateStr = notice.date ? new Date(notice.date).toLocaleDateString('hi-IN', {
             year: 'numeric',

@@ -18,7 +18,7 @@ export function renderHeader() {
   return `
     <header class="site-header" role="banner">
       <!-- Topmost Statutory Disclaimer Strip -->
-      <div style="background-color: var(--color-primary-dark); color: #fef3c7; font-size: 0.72rem; padding: 4px 12px; text-align: center; font-weight: 500;">
+      <div style="background-color: var(--color-primary-dark); color: #fef3c7; font-size: 0.72rem; padding: 4px 12px; text-align: center; font-weight: 500; word-break: break-word; line-height: 1.4; width: 100%; box-sizing: border-box;">
         <span>${t('governmentDisclaimerBadge')} | ${candidateName} • ${panchayatTitle}, ${getLocalized(activeCandidate.district)}</span>
       </div>
 
