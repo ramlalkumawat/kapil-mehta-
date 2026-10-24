@@ -51,9 +51,14 @@
   - Removed `@supabase/supabase-js` package dependency, reducing bundle footprint.
   - Removed `src/services/supabase.js` and `supabase/` migrations.
   - Cleaned up environment variables and service worker references.
+- [x] Phase 16: Admin Decoupling, SVG Candidate Photo & Multi-Device Responsiveness:
+  - Removed admin panel modal and lock button from public citizen portal.
+  - Converted and embedded candidate photograph into self-contained vector SVG assets (`public/kapil-mehta.svg`, `public/kapil-mehta-namaste.svg`).
+  - Added full multi-device responsive rules covering extra small mobile (320px–360px), standard mobile (up to 480px), foldables/tablets (481px–767px), portrait tablets (768px–1023px), and desktop (1024px+).
+  - Production build bundle size reduced by ~75 kB.
+  - All 56 automated tests passing (100%).
 
 ## Pending / Next Recommended Tasks
-- [ ] Replace candidate SVG avatar placeholder with real high-resolution photographs when candidate assets are supplied.
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.
 
 ## Known Limitations / Disclosures

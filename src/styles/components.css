@@ -113,22 +113,7 @@
   border-color: var(--color-primary);
 }
 
-.btn-admin-icon {
-  background: none;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 0.4rem;
-  color: var(--color-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-}
 
-.btn-admin-icon:hover {
-  color: var(--color-primary);
-  background-color: var(--color-surface-subtle);
-}
 
 /* =========================================================================
    2. Mobile Bottom Navigation
@@ -1095,28 +1080,245 @@
 }
 
 /* =========================================================================
-   13. Campaign Management & Admin Portal Tabs
+   13. Universal Multi-Device Responsiveness (Mobile, Tablet, Desktop)
    ========================================================================= */
-.admin-tab-btn {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
+
+/* Mobile Phones (Up to 480px) */
+@media (max-width: 480px) {
+  /* Brand Title & Header Optimization */
+  .header-inner {
+    height: 58px;
+    gap: var(--space-2);
+  }
+
+  .brand-emblem {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+
+  .brand-panchayat {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+
+  .btn-lang-toggle {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.72rem;
+    min-height: 38px;
+  }
+
+  /* Candidate Hero Card on Small Screens */
+  .hero-card {
+    padding: var(--space-4);
+    margin-top: var(--space-3);
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-grid {
+    gap: var(--space-4);
+  }
+
+  .hero-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+  }
+
+  .hero-avatar img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .hero-name {
+    font-size: 1.65rem;
+  }
+
+  .hero-actions-row {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2);
+  }
+
+  .hero-actions-row .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 46px;
+    font-size: var(--font-size-sm);
+  }
+
+  .contact-btn-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-btn-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Emergency Helpline Strip */
+  .helpline-strip {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-3);
+  }
+
+  .helpline-items {
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .helpline-item {
+    font-size: 0.75rem;
+  }
+
+  /* Modal Optimization for Mobile Devices */
+  .modal-backdrop {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .modal-container {
+    max-height: 94vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    margin-bottom: 0;
+  }
+
+  .modal-header {
+    padding: 12px 14px;
+  }
+
+  .modal-title {
+    font-size: 1.05rem;
+  }
+
+  .modal-body {
+    padding: 14px 12px;
+  }
+
+  /* Form Inputs: 16px font prevents iOS automatic zoom on focus */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px;
+    min-height: 44px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  /* Works Tabs on Mobile */
+  .works-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-2);
+    padding-bottom: 4px;
+  }
+
+  .works-tab-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+    min-height: 38px;
+  }
+
+  /* Mobile Bottom Navigation Safe-area */
+  .bottom-nav {
+    height: 60px;
+    padding-bottom: max(4px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .bottom-nav-item {
+    font-size: 0.65rem;
+    min-width: 48px;
+  }
+
+  .bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.admin-tab-btn:hover {
-  color: var(--color-primary);
+/* Extra Small Phones (320px to 360px, e.g. iPhone SE, Fold) */
+@media (max-width: 360px) {
+  .brand-name {
+    max-width: 135px;
+    font-size: 0.88rem;
+  }
+
+  .brand-panchayat {
+    max-width: 135px;
+    font-size: 0.6rem;
+  }
+
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-name {
+    font-size: 1.45rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+  }
 }
 
-.admin-tab-btn.active {
-  color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
-  font-weight: 700;
+/* Tablets & Foldables (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-actions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .hero-actions-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+/* Tablets (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-grid {
+    grid-template-columns: 190px 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .schemes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large Screens & Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}
+
 

@@ -43,8 +43,8 @@ export default {
     hi: 'राजस्थान',
     en: 'Rajasthan'
   },
-  photo: '/kapil-mehta.jpg',
-  photoNamaste: '/kapil-mehta-namaste.jpg',
+  photo: '/kapil-mehta.svg',
+  photoNamaste: '/kapil-mehta-namaste.svg',
   symbol: null,
 
   // Verified Personal Details

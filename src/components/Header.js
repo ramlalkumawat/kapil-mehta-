@@ -48,7 +48,7 @@ export function renderHeader() {
           <a href="#announcements" class="nav-link">${t('nav.announcements')}</a>
         </nav>
 
-        <!-- Header Actions: Lang Switcher & Staff Access -->
+        <!-- Header Actions: Lang Switcher -->
         <div class="header-actions">
           <button id="btn-lang-toggle" class="btn-lang-toggle" aria-label="Switch Language / भाषा बदलें" title="Switch Language">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -57,13 +57,6 @@ export function renderHeader() {
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <span>${currentLang === 'hi' ? 'English' : 'हिन्दी'}</span>
-          </button>
-
-          <button id="btn-open-admin" class="btn-admin-icon" aria-label="${t('nav.adminLogin')}" title="${t('nav.adminLogin')}">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
           </button>
         </div>
       </div>

@@ -25,7 +25,6 @@ import { renderSchemesSection, initSchemesEvents } from './components/SchemesSec
 import { renderAnnouncementsSection } from './components/AnnouncementsSection.js';
 import { renderComplaintModal, initComplaintModalEvents } from './components/ComplaintModal.js';
 import { renderComplaintTracker, initComplaintTrackerEvents } from './components/ComplaintTracker.js';
-import { renderAdminPanel, initAdminPanelEvents } from './components/AdminPanel.js';
 import { renderFooter } from './components/Footer.js';
 
 // Apply candidate custom theme colors if specified
@@ -80,7 +79,6 @@ function renderApp() {
     <!-- Modals & Overlays -->
     ${renderComplaintModal()}
     ${renderComplaintTracker()}
-    ${renderAdminPanel()}
   `;
 
   // Initialize interactive event listeners
@@ -91,7 +89,6 @@ function renderApp() {
   initSchemesEvents();
   initComplaintModalEvents();
   initComplaintTrackerEvents();
-  initAdminPanelEvents();
 }
 
 // Initial mount

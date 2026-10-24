@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.0] - 2026-10-24
+### Changed & Removed
+- **Removed Admin Panel from Public Citizen Portal**:
+  - Completely detached administrative dashboard and modal (`renderAdminPanel`, `initAdminPanelEvents`) from `src/main.js`.
+  - Removed admin staff trigger lock button (`#btn-open-admin`) from header.
+  - Reduced production bundle size from 268 kB to 194 kB (~74 kB saving).
+- **Candidate Photo in High-Quality SVG Format**:
+  - Converted and embedded candidate photograph into self-contained vector SVG assets (`public/kapil-mehta.svg`, `public/kapil-mehta-namaste.svg`, `public/candidate-avatar.svg`).
+  - Added royal Rajasthani circular and rectangular gradient frames (maroon `#800020`, saffron gold `#d97706`).
+  - Updated candidate configuration and hero/profile components to use `.svg` photos with zero degradation on retina/high-DPI screens.
+- **Universal Multi-Device Responsiveness**:
+  - Added specific media queries for extra small mobile (320px–360px), standard mobile (up to 480px), foldables/tablets (481px–767px), portrait tablets (768px–1023px), and large screens (1024px+).
+  - Mobile full-width CTAs with 46px touch targets for seamless grievance lodging and tracking.
+  - Safe-area bottom padding for iOS notch and home bars.
+  - 16px font on inputs to prevent iOS Safari auto-zoom.
+  - Responsive modals with bottom-sheet appearance on mobile.
+
 ## [1.2.0] - 2026-10-24
 ### Added
 - **Google Cloud Run Live Grievance Microservice Integration**:
