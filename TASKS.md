@@ -80,6 +80,11 @@
   - Added modern 'Coming Soon / जल्द उपलब्ध' card in `src/components/AnnouncementsSection.js`.
   - Added bilingual translations in `src/locales/hi.js` and `src/locales/en.js`.
   - All 58 tests passing and production build verified.
+- [x] Phase 22: Expanded Grievance Section to 'Citizen Complaints & Suggestions' ("नागरिक शिकायत एवं सुझाव"):
+  - Rebranded complaint actions across Hero, Services hub, and BottomNav to "शिकायत / सुझाव दर्ज करें".
+  - Added new category option `suggestion`: "💡 विकास सुझाव / नवाचार विचार".
+  - Updated form labels and placeholders to collect both civic issues and constructive village development ideas.
+  - All 58 tests passing and production build verified.
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.

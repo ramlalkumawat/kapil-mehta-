@@ -184,6 +184,7 @@ export function validateComplaintInput(data) {
     'general',
     'cleanliness',
     'light',
+    'suggestion',
     'other'
   ];
   if (data.category && !validCategories.includes(data.category)) {

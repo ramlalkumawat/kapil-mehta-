@@ -83,6 +83,7 @@ export function renderComplaintModal() {
               </label>
               <select id="complaint-category" name="category" class="form-select">
                 <option value="">${t('complaint.fields.categoryPlaceholder')}</option>
+                <option value="suggestion">${t('complaint.categories.suggestion')}</option>
                 <option value="road">${t('complaint.categories.road')}</option>
                 <option value="water">${t('complaint.categories.water')}</option>
                 <option value="electricity">${t('complaint.categories.electricity')}</option>

@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.6] - 2026-10-24
+### Changed
+- **Expanded Grievance Section to 'Citizen Complaints & Suggestions' ("नागरिक शिकायत एवं सुझाव")**:
+  - Rebranded complaint actions and buttons across Hero, Citizen Services, and BottomNav to "शिकायत / सुझाव दर्ज करें" (`Submit Complaint / Suggestion`).
+  - Added new category option `suggestion`: "💡 विकास सुझाव / नवाचार विचार" (`💡 Development Suggestion / Feedback`) in `ComplaintModal.js` and `complaintService.js`.
+  - Updated form labels, placeholders, and descriptions to encourage citizens to share both civic grievances and constructive development ideas.
+  - Updated status tracking messages and bilingual dictionaries in `src/locales/hi.js` and `src/locales/en.js`.
+
 ## [1.3.5] - 2026-10-24
 ### Changed
 - **Announcements / Public Notices Section ("सूचनाएं") Emptied with 'Coming Soon' State**:
