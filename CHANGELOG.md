@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.3.9] - 2026-10-24
+### Added
+- **Official Social Media Integration (Instagram & Facebook)**:
+  - Added official Instagram handle (`https://www.instagram.com/kapil_mehta_bjp?xtok=YnkwNWk1YTE5MGVz`) and Facebook profile (`https://www.facebook.com/share/1DZZaqn9aK/`) to candidate profile `config/candidates/candidate-kapil-mehta.js`.
+  - Added interactive Social Media connect buttons in Site Footer (`src/components/Footer.js`) featuring branded Instagram gradient, Facebook blue, and WhatsApp green pills.
+  - Added direct links to Instagram (`@kapil_mehta_bjp`) and Facebook in the Candidate Personal Details Card in `src/components/ProfileSection.js`.
+  - Added bilingual translation keys across `src/locales/hi.js` and `src/locales/en.js`.
+  - Added automated test assertions in `scripts/run-tests.js` (62/62 tests passing).
+
 ## [1.3.8] - 2026-10-24
 ### Added
 - **Public Outreach & Election Campaign Photo Integration ("जनसंपर्क एवं चुनाव अभियान")**:

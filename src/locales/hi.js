@@ -77,7 +77,10 @@ export default {
       position: 'पद / चुनाव',
       ward: 'वार्ड',
       mobile: 'मोबाइल नंबर',
-      whatsapp: 'व्हाट्सएप'
+      whatsapp: 'व्हाट्सएप',
+      instagram: 'इंस्टाग्राम',
+      facebook: 'फेसबुक',
+      socialMedia: 'सोशल मीडिया'
     },
     educationTimelineHeading: 'शैक्षणिक योग्यता विवरण',
     politicalJourneyHeading: 'राजनैतिक एवं सामाजिक यात्रा (2014–2025)'
@@ -276,6 +279,7 @@ export default {
   footer: {
     aboutTitle: 'कपिल मेहता के बारे में',
     officeTitle: 'कार्यालय व संपर्क पता',
+    socialTitle: 'सोशल मीडिया पर जुड़ें',
     quickLinksTitle: 'त्वरित लिंक',
     emergencyTitle: 'आपातकालीन सहायता नंबर',
     copyright: 'सर्वाधिकार सुरक्षित',

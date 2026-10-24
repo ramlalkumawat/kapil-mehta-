@@ -370,7 +370,9 @@ export default {
   },
 
   socialLinks: {
-    whatsapp: 'https://wa.me/919785899641'
+    whatsapp: 'https://wa.me/919785899641',
+    instagram: 'https://www.instagram.com/kapil_mehta_bjp?xtok=YnkwNWk1YTE5MGVz',
+    facebook: 'https://www.facebook.com/share/1DZZaqn9aK/'
   },
 
   emergencyNumbers: [

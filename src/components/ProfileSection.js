@@ -109,6 +109,28 @@ export function renderProfileSection() {
                   </strong>
                 </div>
                 ` : ''}
+
+                ${activeCandidate.socialLinks?.instagram ? `
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.instagram')}</span>
+                  <strong class="detail-val">
+                    <a href="${activeCandidate.socialLinks.instagram}" target="_blank" rel="noopener noreferrer" style="color: #e1306c; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                      @kapil_mehta_bjp ↗
+                    </a>
+                  </strong>
+                </div>
+                ` : ''}
+
+                ${activeCandidate.socialLinks?.facebook ? `
+                <div class="personal-detail-item">
+                  <span class="detail-label">${t('profile.labels.facebook')}</span>
+                  <strong class="detail-val">
+                    <a href="${activeCandidate.socialLinks.facebook}" target="_blank" rel="noopener noreferrer" style="color: #1877f2; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                      Facebook Profile ↗
+                    </a>
+                  </strong>
+                </div>
+                ` : ''}
               </div>
             </div>
           </div>

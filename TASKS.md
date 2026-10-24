@@ -99,6 +99,12 @@
   - Added Prev / Next navigation arrows and keyboard Arrow navigation to fullscreen Lightbox.
   - Updated candidate profile with all 10 verified photographs, categorized with bilingual titles, descriptions, tags, and locations.
   - All 60 automated tests passing (**100%**); verified with `npm test` and `npm run build`.
+- [x] Phase 25: Official Social Media Integration (Instagram & Facebook):
+  - Configured verified Instagram (`kapil_mehta_bjp`) and Facebook URLs in `config/candidates/candidate-kapil-mehta.js` under `socialLinks`.
+  - Added styled social media connect buttons in Site Footer (`src/components/Footer.js`) and direct quick links in Personal Details card (`src/components/ProfileSection.js`).
+  - Added bilingual keys across `src/locales/hi.js` and `src/locales/en.js`.
+  - Added automated test assertions in `scripts/run-tests.js`; 62 of 62 tests passing (**100%**).
+  - Production build verified with Vite (`npm run build`).
 
 ## Pending / Next Recommended Tasks
 - [ ] Connect custom domain (e.g. `kapilmehta.sarpanchsetu.in`) for candidate deployment.

@@ -77,7 +77,10 @@ export default {
       position: 'Position / Office',
       ward: 'Ward',
       mobile: 'Mobile Number',
-      whatsapp: 'WhatsApp'
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
+      facebook: 'Facebook',
+      socialMedia: 'Social Media'
     },
     educationTimelineHeading: 'Educational Qualifications',
     politicalJourneyHeading: 'Political & Leadership Journey (2014–2025)'
@@ -276,6 +279,7 @@ export default {
   footer: {
     aboutTitle: 'About Kapil Mehta',
     officeTitle: 'Office & Secretariat Address',
+    socialTitle: 'Connect on Social Media',
     quickLinksTitle: 'Quick Links',
     emergencyTitle: 'Emergency Help Contacts',
     copyright: 'All Rights Reserved',
